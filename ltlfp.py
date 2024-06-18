@@ -187,7 +187,9 @@ def run() -> None:
         for2 = parser(a1)    
         print(for1)
 
-    closure(precedence_a_b)
+    closure(modify(parser(precedence_a_b)))
+    print(closure_set)
+    clean_closure()
     print(closure_set)
     print("all parsed")
 
@@ -199,9 +201,31 @@ def run() -> None:
     H(a) = false T a
     O(a) = true S a
 
-
-
 """
+
+def clean_closure():
+    global closure_set
+    closure_list = list(closure_set)
+    closure_set.clear
+    closure_temp =[]
+    for element in closure_list:
+        element_temp = element.strip()
+        if len(element_temp) == 3 and '(' in element_temp and ')' in element_temp:
+            element_temp = element_temp.replace('(', '').replace(')', '')
+        elif element_temp.startswith('(') and element_temp.endswith(')'):
+            i = 0
+            can_delete_parantesses =  True
+            for j in range(len(element_temp)):
+                if element_temp[j] == '(':
+                    i+=1
+                if (i<1 & (j+1) != len(element_temp)):
+                    can_delete_parantesses = False
+                    break
+                elif element_temp[j] == ')':
+                    i+=-1
+            if can_delete_parantesses: element_temp = element_temp[1:-1].strip()
+        closure_temp.append(element_temp)
+    closure_set = set(closure_temp)
 
 def main() -> None: 
     run()
