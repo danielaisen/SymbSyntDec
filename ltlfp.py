@@ -66,6 +66,18 @@ def closure(string):
             closure_set.add(formula.s)
             closure_set.add('!' + formula.s)
             return formula.s
+        elif isinstance(formula, PLTLfSince):
+            phi1 =add_parentheses(recursive_closure(formula.formulas[0]))  
+            phi2 =add_parentheses(recursive_closure(formula.formulas[1])) 
+            closure_set.add(phi1)
+            closure_set.add(phi2)
+            closure_set.add(add_parentheses( 'Y' + add_parentheses(phi1 +' '+  formula.operator_symbol + ' '+ phi2)))
+        elif isinstance(formula, PLTLfPastRelease):
+            phi1 =add_parentheses(recursive_closure(formula.formulas[0]))  
+            phi2 =add_parentheses(recursive_closure(formula.formulas[1])) 
+            closure_set.add(phi1)
+            closure_set.add(phi2)
+            closure_set.add(add_parentheses( 'Z' + add_parentheses(phi1 +' '+  formula.operator_symbol + ' '+ phi2)))
         elif single_formula(formula):
             phi = add_parentheses(formula.operator_symbol +' '+  recursive_closure(formula.f))
             closure_set.add(phi)
@@ -187,7 +199,7 @@ def run() -> None:
         for2 = parser(a1)    
         print(for1)
 
-    closure(modify(parser(precedence_a_b)))
+    closure(modify(parser("(a P b ) S c ")))
     print(closure_set)
     clean_closure()
     print(closure_set)
