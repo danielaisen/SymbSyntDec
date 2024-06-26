@@ -1,0 +1,33 @@
+from pathlib import Path
+from pddl.formatter import domain_to_string, problem_to_string
+from pddl.parser.domain import DomainParser
+from pddl.parser.problem import ProblemParser
+from pylogics.parsers import parse_pltl
+from plan4past.compiler import Compiler
+from plan4past.utils.rewrite_formula_visitor import rewrite
+
+formula = "H a"
+formula = "Y a"
+
+f = parse_pltl(formula)
+print(f)
+a = rewrite(f)
+print(a)
+
+'''
+domain_path = Path("tests/benchmarks/deterministic/BF/blocksworld_ppltl/domain.pddl")
+problem_path = Path("tests/benchmarks/deterministic/BF/blocksworld_ppltl/p2.pddl")
+
+formula = "on_b_a & O(ontable_c)"
+domain_parser = DomainParser()
+problem_parser = ProblemParser()
+
+domain = domain_parser(domain_path.read_text(encoding="utf-8"))
+problem = problem_parser(problem_path.read_text(encoding="utf-8"))
+goal = parse_pltl(formula)
+
+compiler = Compiler(domain, problem, goal)
+compiler.compile()
+compiled_domain, compiled_problem = compiler.result
+
+'''
