@@ -16,7 +16,7 @@ from pylogics_modalities.syntax.pltl import (
     PropositionalFalse,
     PropositionalTrue,
     Since,
-    Triggers
+    Triggers,
 )
 from modify import modify
 
@@ -115,10 +115,10 @@ def closure_weak_yesterday(formula: WeakBefore) -> Formula:
 def closure_since(formula: Since) -> Formula:
     """Compute the base formula for a Since formulas."""
     Closure_set.add(formula)
-    # if len(formula.operands) != 2:
-    #    head = formula.operands[0]
-    #    tail = Since(*formula.operands[1:])
-    #    return closure(Since(head, tail))
+    if len(formula.operands) != 2:
+        head = formula.operands[0]
+        tail = Since(*formula.operands[1:])
+        return closure(Since(head, tail))
     sub = [closure_operands(f) for f in formula.operands]
     since = Since(*sub)
     Closure_set.add(since)
@@ -129,10 +129,10 @@ def closure_since(formula: Since) -> Formula:
 @closure_operands.register
 def closure_since(formula: Triggers) -> Formula:
     Closure_set.add(formula)
-    # if len(formula.operands) != 2:
-    #    head = formula.operands[0]
-    #    tail = Triggers(*formula.operands[1:])
-    #    return closure(Triggers(head, tail))
+    if len(formula.operands) != 2:
+        head = formula.operands[0]
+        tail = Triggers(*formula.operands[1:])
+        return closure(Triggers(head, tail))
     sub = [closure_operands(f) for f in formula.operands]
     triggers = Triggers(*sub)
     Closure_set.add(triggers)

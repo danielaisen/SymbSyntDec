@@ -2,20 +2,16 @@ from pylogics_modalities.parsers import parse_pltl
 from pylogics_modalities.syntax.base import (
     And as PLTLAnd,
     Or as PLTLOr,
-    Formula,
     Implies as PLTLImplies,
-    Not as PLTLNot,
-    _UnaryOp
+    Not as PLTLNot
 )
 from pylogics_modalities.syntax.pltl import (
     Atomic as PLTLAtomic,
     Before,
     WeakBefore,
-    FalseFormula,
     Historically,
     Once,
     PropositionalFalse,
-    PropositionalTrue,
     Since,
     Triggers
 )

@@ -100,10 +100,10 @@ def modify_weak_yesterday(formula: WeakBefore) -> Formula:
 @modify.register
 def modify_since(formula: Since) -> Formula:
     """Compute the base formula for a Since formulas."""
-    # if len(formula.operands) != 2:
-    #    head = formula.operands[0]
-    #    tail = Since(*formula.operands[1:])
-    #    return modify(Since(head, tail))
+    if len(formula.operands) != 2:
+        head = formula.operands[0]
+        tail = Since(*formula.operands[1:])
+        return modify(Since(head, tail))
     sub = [modify(f) for f in formula.operands]
     return Since(*sub)
 
@@ -111,10 +111,10 @@ def modify_since(formula: Since) -> Formula:
 @modify.register
 def modify_since(formula: Triggers) -> Formula:
     """Compute the base formula for a Triggers formula."""
-    # if len(formula.operands) != 2:
-    #    head = formula.operands[0]
-    #    tail = Triggers(*formula.operands[1:])
-    #    return modify(Triggers(head, tail))
+    if len(formula.operands) != 2:
+        head = formula.operands[0]
+        tail = Triggers(*formula.operands[1:])
+        return modify(Triggers(head, tail))
     sub = [modify(f) for f in formula.operands]
     return Triggers(*sub)
 
