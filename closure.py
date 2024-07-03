@@ -3,21 +3,28 @@
 from pylogics_modalities.parsers import parse_pltl
 from functools import singledispatch
 
-from pylogics_modalities.syntax.base import And as PLTLAnd
-from pylogics_modalities.syntax.base import Formula
-from pylogics_modalities.syntax.base import Not as PLTLNot
-from pylogics_modalities.syntax.base import Or as PLTLOr
-from pylogics_modalities.syntax.base import _UnaryOp
-from pylogics_modalities.syntax.pltl import Atomic as PLTLAtomic
+from pylogics_modalities.parsers import parse_pltl
+from pylogics_modalities.syntax.base import (
+    And as PLTLAnd,
+    Or as PLTLOr,
+    Formula,
+    Implies as PLTLImplies,
+    Not as PLTLNot,
+    _UnaryOp
+)
 from pylogics_modalities.syntax.pltl import (
+    Atomic as PLTLAtomic,
     Before,
     WeakBefore,
     FalseFormula,
+    Historically,
+    Once,
     PropositionalFalse,
     PropositionalTrue,
     Since,
-    Triggers,
+    Triggers
 )
+from functools import singledispatch
 from modify import modify
 
 Closure_set = set()

@@ -1,5 +1,3 @@
-"""Modify the formulas to exclude the modalities: Once, Historically; and the logical operation implies."""
-
 from pylogics_modalities.parsers import parse_pltl
 from pylogics_modalities.syntax.base import (
     And as PLTLAnd,
@@ -32,6 +30,7 @@ def modify_unaryop(formula: _UnaryOp):
 @ singledispatch
 def modify(formula: object) -> Formula:
     """Modify a formula."""
+    """Modify the formulas to exclude the modalities: Once, Historically; and the logical operation implies."""
     raise NotImplementedError(
         f"Modify not implemented for object of type {type(formula)}"
     )
