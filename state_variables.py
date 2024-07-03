@@ -104,15 +104,16 @@ def state_variables_implies(formula: PLTLImplies) -> Formula:
 @state_variables_operands.register
 def state_variables_yesterday(formula: Before) -> Formula:
     """Compute the base formula for a Before (Yesterday) formula."""
-
-    State_variables_set.add(' '+str(formula))
+    State_variables_set.add(formula)
+    # State_variables_set.add(' '+str(formula))
     return Before(state_variables_unaryop(formula))
 
 
 @state_variables_operands.register
 def state_variables_weak_yesterday(formula: WeakBefore) -> Formula:
     """Compute the base formula for a WeakBefore (Weak Yesterday) formula."""
-    State_variables_set.add('_ '+str(formula))
+    State_variables_set.add(formula)
+    # State_variables_set.add('_ '+str(formula))
     return WeakBefore(state_variables_unaryop(formula))
 
 
