@@ -25,16 +25,18 @@ from pylogics_modalities.syntax.pltl import (
     Triggers
 )
 
-SNF_formula = None
+# SNF_formula = parse_pltl("true")
+closure_set = None
 
 
 def snf_unaryop(formula: _UnaryOp):
     return snf_operands(formula.argument)
 
 
-def snf(formula: object) -> Formula:
-    snf_operands(formula)
-    return snf
+def snf(formula: object, closure: set) -> Formula:
+    global closure_set
+    closure_set = closure
+    return snf_operands(formula)
 
 
 @ singledispatch
@@ -63,9 +65,11 @@ def snf_prop_false(formula: PropositionalFalse) -> Formula:
 
 @snf_operands.register
 def snf_atomic(formula: PLTLAtomic) -> Formula:
-    if SNF_formula is None:
-        SNF_formula = formula
-    return formula
+    if formula in closure_set:
+        # global SNF_formula
+        # SNF_formula = PLTLAnd(SNF_formula, formula)
+        return formula
+    return None
 
 
 @snf_operands.register
@@ -112,25 +116,25 @@ def snf_since(formula: Since) -> Formula:
     # if len(formula.operands) != 2:
     #    head = formula.operands[0]
     #    tail = Since(*formula.operands[1:])
-    #    return snf(Since(head, tail))
+    #    return snf_operands(Since(head, tail))
     # sub = [snf_operands(f) for f in formula.operands]
     # return Since(*sub)
-    sub1 = snf(formula.operands[0])
-    sub2 = snf(formula.operands[1])
+    sub1 = snf_operands(formula.operands[0])
+    sub2 = snf_operands(formula.operands[1])
     sub3 = Before(formula)
     return (PLTLOr(sub2, (PLTLAnd(sub1, sub3))))
 
 
 @snf_operands.register
 def snf_since(formula: Triggers) -> Formula:
-    sub1 = snf(formula.operands[0])
-    sub2 = snf(formula.operands[1])
+    sub1 = snf_operands(formula.operands[0])
+    sub2 = snf_operands(formula.operands[1])
     sub3 = WeakBefore(formula)
     return (PLTLAnd(sub2, (PLTLOr(sub1, sub3))))
     # if len(formula.operands) != 2:
     #    head = formula.operands[0]
     #    tail = Triggers(*formula.operands[1:])
-    #    return snf(Triggers(head, tail))
+    #    return snf_operands(Triggers(head, tail))
     # sub = [snf_operands(f) for f in formula.operands]
     # return Triggers(*sub)
 
