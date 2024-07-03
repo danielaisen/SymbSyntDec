@@ -80,7 +80,7 @@ def modify_not(formula: PLTLNot) -> Formula:
 def modify_implies(formula: PLTLImplies) -> Formula:
     """Compute the base formula for an Implies formula. Returns A DNF formula"""
     head = [PLTLNot(modify(f)) for f in formula.operands[:-1]]
-    tail = formula.operands[-1]
+    tail = modify(formula.operands[-1])
     return PLTLOr(*head, tail)
 
 
