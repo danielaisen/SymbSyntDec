@@ -27,6 +27,8 @@ from pylogics_modalities.syntax.pltl import (
 
 
 State_variables_set = set()
+State_variables_set_atoms = {}
+index = 1
 
 
 def clear_set():
@@ -37,10 +39,10 @@ def state_variables_unaryop(formula: _UnaryOp):
     return state_variables_operands(formula.argument)
 
 
-def state_variables(formula: set) -> set:
+def state_variables(formula: set) -> (set, dict):  # type: ignore
     for form in formula:
         state_variables_operands(form)
-    return set(State_variables_set)
+    return set(State_variables_set), (State_variables_set_atoms)
 
 
 @ singledispatch
@@ -104,7 +106,7 @@ def state_variables_implies(formula: PLTLImplies) -> Formula:
 @state_variables_operands.register
 def state_variables_yesterday(formula: Before) -> Formula:
     """Compute the base formula for a Before (Yesterday) formula."""
-    State_variables_set.add(formula)
+    add_variable(formula, "Before")
     # State_variables_set.add(' '+str(formula))
     return Before(state_variables_unaryop(formula))
 
@@ -112,9 +114,24 @@ def state_variables_yesterday(formula: Before) -> Formula:
 @state_variables_operands.register
 def state_variables_weak_yesterday(formula: WeakBefore) -> Formula:
     """Compute the base formula for a WeakBefore (Weak Yesterday) formula."""
-    State_variables_set.add(formula)
+    add_variable(formula, "WeakBefore")
     # State_variables_set.add('_ '+str(formula))
     return WeakBefore(state_variables_unaryop(formula))
+
+
+def add_variable(formula, modality):
+    global State_variables_set_atoms
+    State_variables_set.add(formula)
+    if not (formula in State_variables_set_atoms):
+        global index
+        State_variables_set_atoms['x_var' + str(index)] = formula
+        State_variables_set_atoms[formula] = 'x_var' + str(index)
+        if not (modality in State_variables_set_atoms):
+            State_variables_set_atoms[modality] = ['x_var' + str(index)]
+        else:
+            State_variables_set_atoms[modality] = State_variables_set_atoms[modality] + [
+                'x_var' + str(index)]
+        index += 1
 
 
 @state_variables_operands.register
