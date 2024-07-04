@@ -27,6 +27,26 @@ from snf import snf
 from ground import ground
 
 
+def initial_state(state_variables_return_atoms) -> Formula:
+    yesterday_formula = state_variables_return_atoms["Yesterday"]
+    weak_yesterday_formula = state_variables_return_atoms["WeakYesterday"]
+
+    initial_state = parse_pltl("true")
+    for form in yesterday_formula:
+        sub = PLTLNot(PLTLAtomic(form))
+        initial_state = PLTLAnd(initial_state, sub)
+
+    for form in weak_yesterday_formula:
+        sub = PLTLAtomic(form)
+        initial_state = PLTLAnd(initial_state, sub)
+
+    return initial_state
+
+
+def final_state(formula):
+    return ground(snf(formula))
+
+
 def main():
     print("Symbolic Synthesizer for DECLARE")
     formula_str = "H(b -> O(a))"  # precedence(a,b)
@@ -56,19 +76,11 @@ def main():
     ground_return = ground(snf_formula_return, state_variables_return_atoms)
     print(ground_return)
 
+    initial_state_form = initial_state(state_variables_return_atoms)
+    final_state_form = final_state(formula_modified)
+
     print("HERE WE GO!!!")
 
 
 if __name__ == "__main__":
     main()
-
-
-def initial_state(state_variables_return_atoms) -> Formula:
-    yesterday_formula = state_variables_return_atoms["Yesterday"]
-    weak_yesterday_formula = state_variables_return_atoms["WeakYesterday"]
-
-    initial_state = parse_pltl("true")
-    for form in yesterday_formula:
-        initial_state = PLTLAnd(*form)
-
-    return initial_state
