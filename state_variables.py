@@ -90,7 +90,6 @@ def state_variables_or(formula: PLTLOr) -> Formula:
 
 @state_variables_operands.register
 def state_variables_not(formula: PLTLNot) -> Formula:
-
     return PLTLNot(state_variables_unaryop(formula))
 
 
@@ -106,7 +105,7 @@ def state_variables_implies(formula: PLTLImplies) -> Formula:
 @state_variables_operands.register
 def state_variables_yesterday(formula: Before) -> Formula:
     """Compute the base formula for a Before (Yesterday) formula."""
-    add_variable(formula, "Before")
+    add_variable(formula, "Yesterday")
     # State_variables_set.add(' '+str(formula))
     return Before(state_variables_unaryop(formula))
 
@@ -114,7 +113,7 @@ def state_variables_yesterday(formula: Before) -> Formula:
 @state_variables_operands.register
 def state_variables_weak_yesterday(formula: WeakBefore) -> Formula:
     """Compute the base formula for a WeakBefore (Weak Yesterday) formula."""
-    add_variable(formula, "WeakBefore")
+    add_variable(formula, "WeakYesterday")
     # State_variables_set.add('_ '+str(formula))
     return WeakBefore(state_variables_unaryop(formula))
 

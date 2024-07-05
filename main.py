@@ -5,7 +5,8 @@ from pylogics_modalities.syntax.base import (
     Formula,
     Implies as PLTLImplies,
     Not as PLTLNot,
-    _UnaryOp
+    _UnaryOp,
+    Equivalence as PLTLEquivalence
 )
 from pylogics_modalities.syntax.pltl import (
     Atomic as PLTLAtomic,
@@ -43,8 +44,37 @@ def initial_state(state_variables_return_atoms) -> Formula:
     return initial_state
 
 
-def final_state(formula):
-    return ground(snf(formula))
+def final_state(formula, closure_set, state_variables) -> Formula:
+    snf_form = snf(formula, closure_set)
+    return ground(snf_form, state_variables)
+
+
+def transition_relation(state_variables_return_atoms: dict, closure_set) -> (dict, Formula):  # type: ignore
+    yesterday_formula = state_variables_return_atoms["Yesterday"]
+    weak_yesterday_formula = state_variables_return_atoms["WeakYesterday"]
+    transition_relation_dict = {}
+    transition_relation_formula = parse_pltl("true")
+
+    for form in yesterday_formula:
+        transition_relation_formula = snf_for_primed_var(
+            transition_relation_formula, state_variables_return_atoms, closure_set, transition_relation_dict, form)
+
+    for form in weak_yesterday_formula:
+        transition_relation_formula = snf_for_primed_var(
+            transition_relation_formula, state_variables_return_atoms, closure_set, transition_relation_dict, form)
+
+    return transition_relation_dict, transition_relation_formula
+
+
+def snf_for_primed_var(transition_relation_formula, state_variables_return_atoms, closure_set, transition_relation_dict, form):
+    sub = state_variables_return_atoms.get(form).argument
+    transition = snf(sub, closure_set)
+    transition_relation_dict[form+'_prime'] = transition
+    formula = PLTLEquivalence(parse_pltl(form+'_prime'), sub)
+    transition_relation_formula = PLTLAnd(
+        transition_relation_formula, formula)
+
+    return transition_relation_formula
 
 
 def main():
@@ -77,7 +107,14 @@ def main():
     print(ground_return)
 
     initial_state_form = initial_state(state_variables_return_atoms)
-    final_state_form = final_state(formula_modified)
+    print(initial_state_form)
+
+    final_state_form = final_state(
+        formula_modified, closure_set_return, state_variables_return_atoms)
+    print(final_state_form)
+
+    transition_relation_dict, transition_relation_form = transition_relation(
+        state_variables_return_atoms, closure_set_return)
 
     print("HERE WE GO!!!")
 
