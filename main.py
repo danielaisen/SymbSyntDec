@@ -27,6 +27,7 @@ from state_variables import state_variables, State_variables_set, State_variable
 from snf import snf
 from ground import ground
 from pastSimple import past_simple_con, past_simple_env
+from past import past_declare_pattern
 
 
 def initial_state(state_variables_return_atoms) -> Formula:
@@ -88,48 +89,52 @@ def str_to_pltl(set_string):
 def main():
     print("Symbolic Synthesizer for DECLARE")
 
-    action_environment_str = set(["a", "t"])
+    phi_env = ["resp-existence(open,regaddr)"]
+    psi_simple_env = past_declare_pattern(phi_env)
+
+    # phi_con = ["precedence(regaddr,ship)", "succession(pay,ship)"]
+    phi_con = ["succession(pay,ship)"]
+    psi_simple_con = past_declare_pattern(phi_con)
+
+    action_environment_str = set(["open", "regaddr", "pay"])
     action_environment_pltl = str_to_pltl(action_environment_str)
     psi_env = past_simple_env(action_environment_pltl)
 
-    action_controller_str = set(["b", "c"])
+    action_controller_str = set(["ship", "skip"])
     action_controller_pltl = str_to_pltl(action_controller_str)
     psi_con = past_simple_con(action_controller_pltl)
 
-    psi_simple_env = ""
-    psi_simple_con = ""
+    formula_pltl = PLTLAnd(psi_simple_con,
+                           PLTLImplies(
+                               PLTLAnd(psi_simple_env, psi_env),
+                               psi_con))
 
-    formula = PLTLAnd(psi_simple_con,
-                      PLTLImplies(
-                          PLTLAnd(psi_simple_env, psi_env),
-                          psi_con))
-
-    formula_str = "H(b -> O(a))"  # precedence(a,b)
-    print(formula_str)
-    formula_pltl = parse_pltl(formula_str)
-    print(formula_pltl)
+    # formula_str = "H(b -> O(a))"  # precedence(a,b)
+    # #print(formula_str)
+    # formula_pltl = parse_pltl(formula_str)
+    # #print(formula_pltl)
     formula_modified = modify(formula_pltl)
-    print(formula_modified)
-    print()
+    # print(formula_modified)
+    # print()
 
     closure_set_return = closure(formula_modified)
-    print(closure_set_return)
-    print(Closure_set)
-    print()
+    # print(closure_set_return)
+    # print(Closure_set)
+    # print()
 
     state_variables_return, state_variables_return_atoms = state_variables(
         closure_set_return)
-    print(state_variables_return)
-    print(State_variables_set)
-    print()
+    # print(state_variables_return)
+    # print(State_variables_set)
+    # print()
 
     snf_formula_return = snf(formula_modified, closure_set_return)
-    print(snf_formula_return)
-    # print(SNF_formula)
-    print()
+    # print(snf_formula_return)
+    # #print(SNF_formula)
+    # print()
 
     ground_return = ground(snf_formula_return, state_variables_return_atoms)
-    print(ground_return)
+    # print(ground_return)
 
     initial_state_form = initial_state(state_variables_return_atoms)
     print(initial_state_form)
