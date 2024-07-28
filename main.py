@@ -26,6 +26,7 @@ from modify import modify
 from state_variables import state_variables, State_variables_set, State_variables_set_atoms
 from snf import snf
 from ground import ground
+from pastSimple import past_simple_con, past_simple_env
 
 
 def initial_state(state_variables_return_atoms) -> Formula:
@@ -77,8 +78,32 @@ def snf_for_primed_var(transition_relation_formula, state_variables_return_atoms
     return transition_relation_formula
 
 
+def str_to_pltl(set_string):
+    list_elements = []
+    for element in set_string:
+        list_elements.append(parse_pltl(element))
+    return set(list_elements)
+
+
 def main():
     print("Symbolic Synthesizer for DECLARE")
+
+    action_environment_str = set(["a", "t"])
+    action_environment_pltl = str_to_pltl(action_environment_str)
+    psi_env = past_simple_env(action_environment_pltl)
+
+    action_controller_str = set(["b", "c"])
+    action_controller_pltl = str_to_pltl(action_controller_str)
+    psi_con = past_simple_con(action_controller_pltl)
+
+    psi_simple_env = ""
+    psi_simple_con = ""
+
+    formula = PLTLAnd(psi_simple_con,
+                      PLTLImplies(
+                          PLTLAnd(psi_simple_env, psi_env),
+                          psi_con))
+
     formula_str = "H(b -> O(a))"  # precedence(a,b)
     print(formula_str)
     formula_pltl = parse_pltl(formula_str)
