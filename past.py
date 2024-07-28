@@ -1,29 +1,41 @@
 from pylogics_modalities.parsers import parse_pltl
 
-from pylogics_modalities.syntax.base import Formula
+from pylogics_modalities.syntax.base import (Formula, And as PLTLAnd)
 import re
 
 
-def past_declare_pattern(declare_pattern) -> Formula:
+def past_declare_pattern(declare_pattern_set) -> Formula:
+    pltl_formula = None
+    for element in declare_pattern_set:
+        if pltl_formula is None:
+            pltl_formula = past_declare_pattern_call(element)
+        else:
+            pltl_formula = PLTLAnd(
+                pltl_formula, past_declare_pattern_call(element))
+
+    return pltl_formula
+
+
+def past_declare_pattern_call(declare_pattern) -> str:
     transformations = {
-        "existence\((\w+)\)": "O({p})",
-        "absence2\((\w+)\)": "H({p} -> ZH(!{p}))",
-        "choice\((\w+), (\w+)\)": "O({p} | {q})",
-        "exc-choice\((\w+), (\w+)\)": "O({p} | {q}) & (H(!{p}) | H(!{q}))",
-        "resp-existence\((\w+), (\w+)\)": "H(!{p}) | O({q})",
-        "coexistence\((\w+), (\w+)\)": "(H(!{p}) | O({q})) & (H(!{q}) | O({p}))",
-        "response\((\w+), (\w+)\)": "{q} T (!{p} | {q})",
-        "precedence\((\w+), (\w+)\)": "H({q} -> O({p}))",
-        "succession\((\w+), (\w+)\)": "{p} T (!{p} | {q}) & H({q} -> O({p}))",
-        "alt-response\((\w+), (\w+)\)": "({p} | {q}) T (!{p}) & H({q} -> Z({q} T (({p}|!{q})&Z({q} T (!{p})))))",
-        "alt-precedence\((\w+), (\w+)\)": "H({q} -> O({p})) & H({q} & !{p} -> Z({q} T ({q} & !{p})))",
-        "alt-succession\((\w+), (\w+)\)": "( ({p} | {q}) T (!{p}) & H({q} -> Z({q} T (({p}|!{q})&Z({q} T (!{p}))))) ) & ( H({q} -> O({p})) & H({q} & !{p} -> Z({q} T ({q} & !{p}))) )",
-        "chain-response\((\w+), (\w+)\)": "!{p} & H(!{q} | ({p} -> {q}))",
-        "chain-precedence\((\w+), (\w+)\)": "H({q} -> Z({p}))",
-        "chain-succession\((\w+), (\w+)\)": "(!{p} & H(!{q} | ({p} -> {q}))) & (H({q} -> Z({p})))",
-        "not-coexistence\((\w+), (\w+)\)": "H(!{p} | H(!{q}))",
-        "neg-succession\((\w+), (\w+)\)": "H(!{p} | {q}) S ({p} & !{q} & Z H(!{p}))",
-        "neg-chain-succession\((\w+), (\w+)\)": "H(Y({q} -> !{q}) & H(Y({q} -> !{p})))"
+        r"existence\(\s*(\w+)\s*\)": "O({p})",
+        r"absence2\(\s*(\w+)\s*\)": "H({p} -> ZH(!{p}))",
+        r"choice\(\s*(\w+)\s*,\s*(\w+)\s*\)": "O({p} | {q})",
+        r"exc-choice\(\s*(\w+)\s*,\s*(\w+)\s*\)": "O({p} | {q}) & (H(!{p}) | H(!{q}))",
+        r"resp-existence\(\s*(\w+)\s*,\s*(\w+)\s*\)": "H(!{p}) | O({q})",
+        r"coexistence\(\s*(\w+)\s*,\s*(\w+)\s*\)": "(H(!{p}) | O({q})) & (H(!{q}) | O({p}))",
+        r"response\(\s*(\w+)\s*,\s*(\w+)\s*\)": "{q} T (!{p} | {q})",
+        r"precedence\(\s*(\w+)\s*,\s*(\w+)\s*\)": "H({q} -> O({p}))",
+        r"succession\(\s*(\w+)\s*,\s*(\w+)\s*\)": "{p} T (!{p} | {q}) & H({q} -> O({p}))",
+        r"alt-response\(\s*(\w+)\s*,\s*(\w+)\s*\)": "({p} | {q}) T (!{p}) & H({q} -> Z({q} T (({p}|!{q})&Z({q} T (!{p})))))",
+        r"alt-precedence\(\s*(\w+)\s*,\s*(\w+)\s*\)": "H({q} -> O({p})) & H({q} & !{p} -> Z({q} T ({q} & !{p})))",
+        r"alt-succession\(\s*(\w+)\s*,\s*(\w+)\s*\)": "( ({p} | {q}) T (!{p}) & H({q} -> Z({q} T (({p}|!{q})&Z({q} T (!{p}))))) ) & ( H({q} -> O({p})) & H({q} & !{p} -> Z({q} T ({q} & !{p}))) )",
+        r"chain-response\(\s*(\w+)\s*,\s*(\w+)\s*\)": "!{p} & H(!{q} | ({p} -> {q}))",
+        r"chain-precedence\(\s*(\w+)\s*,\s*(\w+)\s*\)": "H({q} -> Z({p}))",
+        r"chain-succession\(\s*(\w+)\s*,\s*(\w+)\s*\)": "(!{p} & H(!{q} | ({p} -> {q}))) & (H({q} -> Z({p})))",
+        r"not-coexistence\(\s*(\w+)\s*,\s*(\w+)\s*\)": "H(!{p} | H(!{q}))",
+        r"neg-succession\(\s*(\w+)\s*,\s*(\w+)\s*\)": "H(!{p} | {q}) S ({p} & !{q} & Z H(!{p}))",
+        r"neg-chain-succession\(\s*(\w+)\s*,\s*(\w+)\s*\)": "H(Y({q} -> !{q}) & H(Y({q} -> !{p})))"
     }
 
     for pattern, template in transformations.items():
@@ -53,8 +65,8 @@ declare_patterns = [
 
 # Transformations
 for declare_pattern in declare_patterns:
-   pastified = past_declare_pattern(declare_pattern)
-   print(f"{declare_pattern:<24}-> {pastified}")
+    pastified = past_declare_pattern({declare_pattern})
+    print(f"{declare_pattern:<24}-> {pastified}")
 
 
 # Examples
