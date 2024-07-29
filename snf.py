@@ -26,7 +26,7 @@ from pylogics_modalities.syntax.pltl import (
 )
 
 # SNF_formula = parse_pltl("true")
-closure_set = None
+Sigma = None
 
 
 def snf_unaryop(formula: _UnaryOp):
@@ -34,8 +34,8 @@ def snf_unaryop(formula: _UnaryOp):
 
 
 def snf(formula: object, closure: set) -> Formula:
-    global closure_set
-    closure_set = closure
+    global Sigma
+    Sigma = closure
     return snf_operands(formula)
 
 
@@ -65,7 +65,7 @@ def snf_prop_false(formula: PropositionalFalse) -> Formula:
 
 @snf_operands.register
 def snf_atomic(formula: PLTLAtomic) -> Formula:
-    if formula in closure_set:
+    if formula in Sigma:
         # global SNF_formula
         # SNF_formula = PLTLAnd(SNF_formula, formula)
         return formula
