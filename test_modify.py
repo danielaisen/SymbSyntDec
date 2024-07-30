@@ -18,7 +18,7 @@ from pylogics_modalities.syntax.pltl import (
 
 import unittest
 import coverage
-from modify import modify
+from SymbSynDec.modify import modify
 
 
 a = PLTLAtomic("a")

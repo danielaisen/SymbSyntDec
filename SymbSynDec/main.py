@@ -1,4 +1,8 @@
 from pylogics_modalities.parsers import parse_pltl
+
+from SymDFA2AIGER import SymDFA2AIGER
+
+
 from pylogics_modalities.syntax.base import (
     And as PLTLAnd,
     Or as PLTLOr,
@@ -21,13 +25,13 @@ from pylogics_modalities.syntax.pltl import (
     Triggers
 )
 
-from closure import closure, clear_set, Closure_set
-from modify import modify
-from state_variables import state_variables, State_variables_set, State_variables_set_atoms
 from snf import snf
 from ground import ground
 from pastSimple import past_simple_con, past_simple_env
 from past import past_declare_pattern
+from modify import modify
+from closure import closure, clear_set, Closure_set
+from state_variables import state_variables, State_variables_set, State_variables_set_atoms
 
 
 def parse_pltl_PLTLAnd(formula1, formula2):

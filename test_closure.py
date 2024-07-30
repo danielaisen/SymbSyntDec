@@ -23,8 +23,8 @@ from pylogics_modalities.syntax.pltl import (
 import unittest
 import coverage
 
-from modify import modify
-from closure import closure, clear_set
+from SymbSynDec.modify import modify
+from SymbSynDec.closure import closure, clear_set
 
 a = modify(PLTLAtomic("a"))
 b = modify(PLTLAtomic("b"))
