@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "SymbSyntDec"
+version = "1.0.0"
+authors = [
+  { name="Daniel Bachmann Aisen", email="danielmaxaisen@gmail.com" },
+]
+description = "This package takes a symbolic DFA and produces an AIGER file of type aag"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+  "pylogics_modalities",
+  "SymDFA2AIGER"
+]
+
+
+[project.urls]
+Homepage = "https://github.com/danielaisen/SymbSyntDec"
+Issues = "https://github.com/danielaisen/SymbSyntDec/issues"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
