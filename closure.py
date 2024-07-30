@@ -54,13 +54,13 @@ def closure_operands(formula: object) -> Formula:
 @closure_operands.register
 def closure_prop_true(formula: PropositionalTrue) -> Formula:
     # TODO check if I should add true and negated formulas into the closure?
-    return formula
+    True
 
 
 @closure_operands.register
 def closure_prop_false(formula: PropositionalFalse) -> Formula:
     # TODO check if I should add true and negated formulas into the closure?
-    return formula
+    True
 
 
 # @closure_operands.register
@@ -72,27 +72,24 @@ def closure_prop_false(formula: PropositionalFalse) -> Formula:
 def closure_atomic(formula: PLTLAtomic) -> Formula:
     Closure_set.add(formula)
     Closure_set.add(PLTLNot(formula))
-    return formula
 
 
 @closure_operands.register
 def closure_and(formula: PLTLAnd) -> Formula:
     Closure_set.add(formula)
     sub = [closure_operands(f) for f in formula.operands]
-    return PLTLAnd(*sub)
 
 
 @closure_operands.register
 def closure_or(formula: PLTLOr) -> Formula:
     Closure_set.add(formula)
     sub = [closure_operands(f) for f in formula.operands]
-    return PLTLOr(*sub)
 
 
 @closure_operands.register
 def closure_not(formula: PLTLNot) -> Formula:
     Closure_set.add(formula)
-    return PLTLNot(closure_unaryop(formula))
+    closure_unaryop(formula)
 
 
 # @closure_operands.register
@@ -108,43 +105,29 @@ def closure_not(formula: PLTLNot) -> Formula:
 def closure_yesterday(formula: Before) -> Formula:
     Closure_set.add(formula)
     """Compute the base formula for a Before (Yesterday) formula."""
-    return Before(closure_unaryop(formula))
+    closure_unaryop(formula)
 
 
 @closure_operands.register
 def closure_weak_yesterday(formula: WeakBefore) -> Formula:
     Closure_set.add(formula)
     """Compute the base formula for a WeakBefore (Weak Yesterday) formula."""
-    return WeakBefore(closure_unaryop(formula))
+    closure_unaryop(formula)
 
 
 @closure_operands.register
 def closure_since(formula: Since) -> Formula:
     """Compute the base formula for a Since formulas."""
-    Closure_set.add(formula)
-    if len(formula.operands) != 2:
-        head = formula.operands[0]
-        tail = Since(*formula.operands[1:])
-        return closure(Since(head, tail))
-    sub = [closure_operands(f) for f in formula.operands]
-    since = Since(*sub)
-    Closure_set.add(since)
-    Closure_set.add(Before(since))
-    return since
+    Closure_set.add(Before(formula))
+    for form in formula.operands:
+        closure_operands(form)
 
 
 @closure_operands.register
 def closure_since(formula: Triggers) -> Formula:
-    Closure_set.add(formula)
-    if len(formula.operands) != 2:
-        head = formula.operands[0]
-        tail = Triggers(*formula.operands[1:])
-        return closure(Triggers(head, tail))
-    sub = [closure_operands(f) for f in formula.operands]
-    triggers = Triggers(*sub)
-    Closure_set.add(triggers)
-    Closure_set.add(WeakBefore(triggers))
-    return triggers
+    Closure_set.add(WeakBefore(formula))
+    for form in formula.operands:
+        closure_operands(form)
 
 
 '''

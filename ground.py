@@ -26,7 +26,7 @@ from pylogics_modalities.syntax.pltl import (
 )
 
 
-State_var = None
+State_var = {}
 
 
 def ground(formula: object, state_var: dict) -> Formula:
@@ -85,6 +85,7 @@ def ground_operands_not(formula: PLTLNot) -> Formula:
     return PLTLNot(ground_operands_unaryop(formula))
 
 
+'''
 @ground_operands.register
 def ground_operands_implies(formula: PLTLImplies) -> Formula:
     """Compute the base formula for an Implies formula. Returns A DNF formula"""
@@ -92,11 +93,13 @@ def ground_operands_implies(formula: PLTLImplies) -> Formula:
             for f in formula.operands[:-1]]
     tail = formula.operands[-1]
     return PLTLOr(*head, tail)
+'''
 
 
 @ground_operands.register
 def ground_operands_yesterday(formula: Before) -> Formula:
     var = PLTLAtomic(State_var.get(formula))
+    return var
     sub = ground_operands_unaryop(formula)
     return PLTLAnd(var, sub)
 
@@ -104,10 +107,12 @@ def ground_operands_yesterday(formula: Before) -> Formula:
 @ground_operands.register
 def ground_operands_weak_yesterday(formula: WeakBefore) -> Formula:
     var = PLTLAtomic(State_var.get(formula))
-    sub = ground_operands_unaryop(formula)
-    return PLTLAnd(var, sub)
+    return var
+    # sub = ground_operands_unaryop(formula)
+    # return PLTLAnd(var, sub)
 
 
+'''
 @ground_operands.register
 def ground_operands_since(formula: Since) -> Formula:
     """Compute the base formula for a Since formulas."""
@@ -127,3 +132,4 @@ def ground_operands_since(formula: Triggers) -> Formula:
         return ground_operands(Triggers(head, tail))
     sub = [ground_operands(f) for f in formula.operands]
     return Triggers(*sub)
+'''
