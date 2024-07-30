@@ -5,3 +5,4 @@ pip install dist/pylogics_modalities-0.2.2-py3-none-any.whl
 
 
 pip install coverage
+pip install pip install SymDFA2AIGER 

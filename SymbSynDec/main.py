@@ -168,6 +168,27 @@ def main():
     transition_relation_dict, transition_relation_form = transition_relation(
         state_variables_return_atoms, sigma)
 
+    a = parse_pltl("a")
+    b = parse_pltl("b")
+    c = parse_pltl("c")
+    _x1 = parse_pltl("x_var1")
+    _x2 = parse_pltl("x_var2")
+    transition_system_input = {}
+
+    sigma_controlled = {a, c}
+    sigma_environment = {b}
+    final_state_variable = PLTLAnd(_x1, _x2)
+    state_variables_input = [_x1, _x2]
+    initial_state_input = PLTLAnd(parse_pltl("true"), _x1, PLTLNot(_x2))
+
+    transition_system_input["x_var1_prime"] = parse_pltl("(false | a | b | c)")
+    transition_system_input["x_var2_prime"] = parse_pltl(
+        " (true & (! a) & ! c )")
+
+    SymDFA2AIGER(sigma_controlled, sigma_environment, state_variables_input,
+                 initial_state_input, transition_system_input, final_state_variable)
+
+    print("done")
     print("HERE WE GO!!!")
 
 
