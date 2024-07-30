@@ -26,13 +26,13 @@ from pylogics_modalities.syntax.pltl import (
 )
 
 
-State_variables_set = set()
+State_variables_list = []
 State_variables_set_atoms = {}
 index = 1
 
 
 def clear_set():
-    State_variables_set.clear()
+    State_variables_list.clear()
 
 
 def state_variables_unaryop(formula: _UnaryOp):
@@ -42,7 +42,7 @@ def state_variables_unaryop(formula: _UnaryOp):
 def state_variables(formula: set) -> (set, dict):  # type: ignore
     for form in formula:
         state_variables_operands(form)
-    return set(State_variables_set), (State_variables_set_atoms)
+    return State_variables_list, (State_variables_set_atoms)
 
 
 @ singledispatch
@@ -120,7 +120,7 @@ def state_variables_weak_yesterday(formula: WeakBefore) -> Formula:
 
 def add_variable(formula, modality):
     global State_variables_set_atoms
-    State_variables_set.add(formula)
+    State_variables_list.add(formula)
     if not (formula in State_variables_set_atoms):
         global index
         State_variables_set_atoms['x_var' + str(index)] = formula

@@ -25,7 +25,7 @@ from pylogics_modalities.syntax.pltl import (
     Triggers
 )
 from functools import singledispatch
-from modify import modify
+# from modify import modify
 
 Closure_set = set()
 
@@ -147,8 +147,8 @@ def closure_since(formula: Triggers) -> Formula:
     return triggers
 
 
-# Once and Historically are undefined in the Closure definition we are using
 '''
+# Once and Historically are undefined in the Closure definition we are using
 # Examples:
 formula_str = "!a S H(a)"  # a T (Y b)
 print(formula_str)

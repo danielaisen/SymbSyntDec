@@ -25,13 +25,14 @@ from pylogics_modalities.syntax.pltl import (
     Triggers
 )
 
+
 from snf import snf
 from ground import ground
 from pastSimple import past_simple_con, past_simple_env
 from past import past_declare_pattern
 from modify import modify
 from closure import closure, clear_set, Closure_set
-from state_variables import state_variables, State_variables_set, State_variables_set_atoms
+from state_variables import state_variables, State_variables_list, State_variables_set_atoms
 
 
 def parse_pltl_PLTLAnd(formula1, formula2):
@@ -192,5 +193,81 @@ def main():
     print("HERE WE GO!!!")
 
 
+def SymbSyntDec(sigma_controlled_str: set[str], sigma_environment_str: set[str], specification_env_phiE_str: set[str], specification_con_phiC_str: set[str]):
+
+    print("Symbolic Synthesizer for DECLARE")
+
+    action_environment_pltl = str_to_pltl(sigma_environment_str)
+    psi_simple_env = past_declare_pattern(specification_env_phiE_str)
+    psi_env = past_simple_env(action_environment_pltl)
+
+    action_controller_pltl = str_to_pltl(sigma_controlled_str)
+    psi_simple_con = past_declare_pattern(specification_con_phiC_str)
+    psi_con = past_simple_con(action_controller_pltl)
+
+    formula_pltl = PLTLAnd(psi_simple_con,
+                           PLTLImplies(
+                               PLTLAnd(psi_simple_env, psi_env),
+                               psi_con))
+
+    sigma = action_controller_pltl.union(action_environment_pltl)
+    if len(sigma) != (len(action_controller_pltl) + len(action_environment_pltl)):
+        raise NotImplementedError(
+            f"The set of actions are not disjoint {sigma_controlled_str, sigma_environment_str}")
+
+    formula_modified = modify(formula_pltl)
+
+    closure_set_return = closure(formula_modified)
+
+    state_variables_return, state_variables_return_atoms = state_variables(
+        closure_set_return)
+
+    snf_formula_return = snf(formula_modified, sigma)
+
+    ground_return = ground(snf_formula_return, state_variables_return_atoms)
+
+    initial_state_form = initial_state(state_variables_return_atoms)
+    print(initial_state_form)
+
+    final_state_form = final_state(
+        formula_modified, sigma, state_variables_return_atoms)
+    print(final_state_form)
+
+    transition_relation_dict, transition_relation_form = transition_relation(
+        state_variables_return_atoms, sigma)
+
+    a = parse_pltl("a")
+    b = parse_pltl("b")
+    c = parse_pltl("c")
+    _x1 = parse_pltl("x_var1")
+    _x2 = parse_pltl("x_var2")
+    transition_system_input = {}
+
+    sigma_controlled = action_environment_pltl
+    sigma_environment = action_environment_pltl
+
+    state_variables_input = state_variables_return_atoms.keys()
+
+    final_state_variable = final_state_form
+    state_variables_input = [_x1, _x2]
+    initial_state_input = PLTLAnd(parse_pltl("true"), _x1, PLTLNot(_x2))
+
+    transition_system_input["x_var1_prime"] = parse_pltl("(false | a | b | c)")
+    transition_system_input["x_var2_prime"] = parse_pltl(
+        " (true & (! a) & ! c )")
+
+    SymDFA2AIGER(sigma_controlled, sigma_environment, state_variables_input,
+                 initial_state_input, transition_system_input, final_state_variable)
+
+    print("done")
+
+    symbolicDFA = {}
+    symbolicDFA["initial_state_form"] = initial_state_form
+    symbolicDFA["transition_relation_form"] = transition_relation_form
+    symbolicDFA["final_state_form"] = final_state_form
+
+    return symbolicDFA
+
+
 if __name__ == "__main__":
-    main()
+    SymbSyntDec(None, None, None, None)
