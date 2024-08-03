@@ -87,7 +87,6 @@ def state_variables_implies(formula: PLTLImplies):
 def state_variables_yesterday(formula: Before) -> Formula:
     """Compute the base formula for a Before (Yesterday) formula."""
     add_variable(formula, "Yesterday")
-    # State_variables_set.add(' '+str(formula))
     state_variables_unaryop(formula)
 
 
