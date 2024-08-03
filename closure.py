@@ -28,17 +28,20 @@ from functools import singledispatch
 # from modify import modify
 
 Closure_set = set()
-
-
-def clear_set():
-    Closure_set.clear()
+sigma = set()
 
 
 def closure_unaryop(formula: _UnaryOp):
     return closure_operands(formula.argument)
 
 
-def closure(formula: object) -> set:
+def closure(formula: object, sigma_input: set) -> set:
+    global sigma
+    sigma = sigma_input
+    return closure_call(formula)
+
+
+def closure_call(formula: object) -> set:
     Closure_set.add(formula)
     closure_operands(formula)
     return set(Closure_set)
@@ -70,8 +73,10 @@ def closure_prop_false(formula: PropositionalFalse) -> Formula:
 
 @closure_operands.register
 def closure_atomic(formula: PLTLAtomic) -> Formula:
-    Closure_set.add(formula)
-    Closure_set.add(PLTLNot(formula))
+    global sigma
+    if formula in sigma:
+        Closure_set.add(formula)
+        Closure_set.add(PLTLNot(formula))
 
 
 @closure_operands.register
