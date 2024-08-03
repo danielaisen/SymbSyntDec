@@ -108,7 +108,7 @@ def modify_since(formula: Since) -> Formula:
 
 
 @modify.register
-def modify_since(formula: Triggers) -> Formula:
+def modify_triggers(formula: Triggers) -> Formula:
     """Compute the base formula for a Triggers formula."""
     if len(formula.operands) != 2:
         head = formula.operands[0]

@@ -149,8 +149,11 @@ def SymbSyntDec(sigma_controlled_str: set[str], sigma_environment_str: set[str],
     sigma_controlled = action_controller_pltl
     sigma_environment = action_environment_pltl
 
-    state_variables_input = state_variables_return_list.keys()
+    state_variables_input = list(state_variables_return_list.keys())
 
+    initial_state_input = initial_state_form
+    # transition_system_input = transition_relation_form
+    transition_system_input = transition_relation_dict
     final_state_variable = final_state_form
 
     SymDFA2AIGER(sigma_controlled, sigma_environment, state_variables_input,
