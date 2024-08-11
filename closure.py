@@ -1,14 +1,9 @@
-
-"""Modify the formula with base operators visitor."""
-from pylogics_modalities.parsers import parse_pltl
 from functools import singledispatch
 
-from pylogics_modalities.parsers import parse_pltl
 from pylogics_modalities.syntax.base import (
     And as PLTLAnd,
     Or as PLTLOr,
     Formula,
-    Implies as PLTLImplies,
     Not as PLTLNot,
     _UnaryOp
 )
@@ -16,16 +11,12 @@ from pylogics_modalities.syntax.pltl import (
     Atomic as PLTLAtomic,
     Before,
     WeakBefore,
-    FalseFormula,
-    Historically,
-    Once,
     PropositionalFalse,
     PropositionalTrue,
     Since,
     Triggers
 )
 from functools import singledispatch
-# from modify import modify
 
 Closure_set = set()
 sigma = set()
@@ -56,19 +47,12 @@ def closure_operands(formula: object) -> Formula:
 
 @closure_operands.register
 def closure_prop_true(formula: PropositionalTrue) -> Formula:
-    # TODO check if I should add true and negated formulas into the closure?
     True
 
 
 @closure_operands.register
 def closure_prop_false(formula: PropositionalFalse) -> Formula:
-    # TODO check if I should add true and negated formulas into the closure?
     True
-
-
-# @closure_operands.register
-# def closure_false(formula: FalseFormula) -> Formula:
-#    return formula
 
 
 @closure_operands.register
@@ -82,28 +66,19 @@ def closure_atomic(formula: PLTLAtomic) -> Formula:
 @closure_operands.register
 def closure_and(formula: PLTLAnd) -> Formula:
     Closure_set.add(formula)
-    sub = [closure_operands(f) for f in formula.operands]
+    [closure_operands(f) for f in formula.operands]
 
 
 @closure_operands.register
 def closure_or(formula: PLTLOr) -> Formula:
     Closure_set.add(formula)
-    sub = [closure_operands(f) for f in formula.operands]
+    [closure_operands(f) for f in formula.operands]
 
 
 @closure_operands.register
 def closure_not(formula: PLTLNot) -> Formula:
     Closure_set.add(formula)
     closure_unaryop(formula)
-
-
-# @closure_operands.register
-# def closure_implies(formula: PLTLImplies) -> Formula:
-#    Closure_set.add(formula)
-#    """Compute the base formula for an Implies formula. Returns A DNF formula"""
-#    head = [PLTLNot(closure_operands(f)) for f in formula.operands[:-1]]
-#    tail = formula.operands[-1]
-#    return PLTLOr(*head, tail)
 
 
 @closure_operands.register
