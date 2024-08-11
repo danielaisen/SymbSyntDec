@@ -75,14 +75,14 @@ def state_variables_not(formula: PLTLNot):
 def state_variables_yesterday(formula: Before) -> Formula:
     """Compute the base formula for a Before (Yesterday) formula."""
     add_variable(formula, "Yesterday")
-    state_variables_unaryop(formula)
+    # state_variables_unaryop(formula)
 
 
 @state_variables_operands.register
 def state_variables_weak_yesterday(formula: WeakBefore) -> Formula:
     """Compute the base formula for a WeakBefore (Weak Yesterday) formula."""
     add_variable(formula, "WeakYesterday")
-    state_variables_unaryop(formula)
+    # state_variables_unaryop(formula)
 
 
 def add_variable(formula, modality):

@@ -1,10 +1,3 @@
-from pylogics_modalities.parsers import parse_pltl
-from pylogics_modalities.syntax.base import (
-    And as PLTLAnd,
-    Or as PLTLOr,
-    Implies as PLTLImplies,
-    Not as PLTLNot
-)
 from pylogics_modalities.syntax.pltl import (
     Atomic as PLTLAtomic,
     Before,
@@ -15,10 +8,16 @@ from pylogics_modalities.syntax.pltl import (
     Since,
     Triggers
 )
-
-import unittest
+from pylogics_modalities.syntax.base import (
+    And as PLTLAnd,
+    Or as PLTLOr,
+    Implies as PLTLImplies,
+    Not as PLTLNot
+)
+from pylogics_modalities.parsers import parse_pltl
+from src.SymbSyntDec.modify import modify
 import coverage
-from modify import modify
+import unittest
 
 
 a = PLTLAtomic("a")

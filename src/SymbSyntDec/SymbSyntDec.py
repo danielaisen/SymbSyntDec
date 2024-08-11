@@ -15,13 +15,13 @@ from pylogics_modalities.syntax.pltl import (
 )
 
 
-from snf import snf
-from ground import ground
-from pastSimple import past_simple_con, past_simple_env
-from past import past_declare_pattern
-from modify import modify
-from closure import closure
-from state_variables import state_variables
+from .snf import snf
+from .ground import ground
+from .pastSimple import past_simple_con, past_simple_env
+from .past import past_declare_pattern
+from .modify import modify
+from .closure import closure
+from .state_variables import state_variables
 
 
 def parse_pltl_PLTLAnd(formula1, formula2):
@@ -116,6 +116,7 @@ def SymbSyntDec(sigma_controlled_str: set[str], sigma_environment_str: set[str],
     formula_modified = modify(formula_pltl)
 
     closure_set_return = closure(formula_modified, sigma)
+    print("1")
 
     state_variables_return_dict, state_variables_return_atoms = state_variables(
         closure_set_return)
@@ -126,6 +127,7 @@ def SymbSyntDec(sigma_controlled_str: set[str], sigma_environment_str: set[str],
     t_s1, ts2 = state_variables(t_c)
 
     ground_return = ground(snf_formula_return, state_variables_return_atoms)
+    print("1")
 
     initial_state_form = initial_state(state_variables_return_atoms)
     print(f"Initial state formula: \n {initial_state_form} \n")
