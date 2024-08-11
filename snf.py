@@ -81,7 +81,8 @@ def snf_or(formula: PLTLOr) -> Formula:
 
 @snf_operands.register
 def snf_not(formula: PLTLNot) -> Formula:
-    return PLTLNot(snf_unaryop(formula))
+    temp = snf_unaryop(formula)
+    return PLTLNot(temp)
 
 
 @snf_operands.register
@@ -108,12 +109,6 @@ def snf_weak_yesterday(formula: WeakBefore) -> Formula:
 @snf_operands.register
 def snf_since(formula: Since) -> Formula:
     """Compute the base formula for a Since formulas."""
-    # if len(formula.operands) != 2:
-    #    head = formula.operands[0]
-    #    tail = Since(*formula.operands[1:])
-    #    return snf_operands(Since(head, tail))
-    # sub = [snf_operands(f) for f in formula.operands]
-    # return Since(*sub)
     sub1 = snf_operands(formula.operands[0])
     sub2 = snf_operands(formula.operands[1])
     sub3 = Before(formula)
