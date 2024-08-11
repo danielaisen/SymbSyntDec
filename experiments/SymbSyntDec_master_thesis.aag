@@ -1,0 +1,228 @@
+aag 141 6 35 1 100
+2
+4
+6
+8
+10
+12
+14 16
+18 20
+22 24
+26 28
+30 32
+34 36
+38 40
+42 44
+46 48
+50 52
+54 56
+58 60
+62 64
+66 68
+70 72
+74 76
+78 80
+82 1
+16 197
+56 201
+44 205
+80 209
+68 215
+64 219
+32 225
+52 229
+40 235
+24 247
+72 251
+20 257
+60 265
+48 269
+76 273
+36 277
+28 283
+84
+84 82 190
+86 6 5
+88 7 75
+90 4 7
+92 90 67
+94 9 48
+96 95 7
+98 96 67
+100 8 7
+102 9 27
+104 6 9
+106 104 31
+108 95 13
+110 108 39
+112 7 9
+114 11 13
+116 112 114
+118 70 117
+120 119 51
+122 117 6
+124 8 10
+126 122 124
+128 126 12
+130 54 117
+132 14 7
+134 9 11
+136 132 134
+138 136 13
+140 70 3
+142 140 5
+144 143 63
+146 3 5
+148 2 4
+150 147 149
+152 42 151
+154 78 147
+156 145 153
+158 155 60
+160 156 158
+162 99 101
+164 103 107
+166 20 111
+168 121 129
+170 131 139
+172 24 161
+174 162 164
+176 166 168
+178 170 172
+180 174 176
+182 180 178
+184 87 89
+186 93 36
+188 184 186
+190 188 183
+192 83 0
+194 82 54
+196 193 195
+198 82 117
+200 193 199
+202 82 146
+204 193 203
+206 82 42
+208 193 207
+210 7 67
+212 82 211
+214 193 213
+216 82 145
+218 193 217
+220 9 31
+222 82 221
+224 193 223
+226 82 121
+228 193 227
+230 13 39
+232 82 231
+234 193 233
+236 129 131
+238 139 24
+240 236 238
+242 83 1
+244 82 240
+246 243 245
+248 82 0
+250 243 249
+252 107 20
+254 82 252
+256 243 255
+258 153 155
+260 258 60
+262 82 260
+264 243 263
+266 82 94
+268 243 267
+270 82 184
+272 243 271
+274 82 186
+276 243 275
+278 101 103
+280 82 278
+282 243 281
+i0 controllable_skip
+i1 controllable_ship
+i2 i_pay
+i3 i_open
+i4 i_reqc
+i5 i_regaddr
+l0 latch_x_var1
+l1 latch_x_var1_prime
+l2 latch_x_var4
+l3 latch_x_var4_prime
+l4 latch_x_var2
+l5 latch_x_var2_prime
+l6 latch_x_var16
+l7 latch_x_var16_prime
+l8 latch_x_var11
+l9 latch_x_var11_prime
+l10 latch_x_var15
+l11 latch_x_var15_prime
+l12 latch_x_var17
+l13 latch_x_var17_prime
+l14 latch_x_var6
+l15 latch_x_var6_prime
+l16 latch_x_var12
+l17 latch_x_var12_prime
+l18 latch_x_var14
+l19 latch_x_var14_prime
+l20 latch_x_var5
+l21 latch_x_var5_prime
+l22 latch_x_var8
+l23 latch_x_var8_prime
+l24 latch_x_var10
+l25 latch_x_var10_prime
+l26 latch_x_var9
+l27 latch_x_var9_prime
+l28 latch_x_var3
+l29 latch_x_var3_prime
+l30 latch_x_var13
+l31 latch_x_var13_prime
+l32 latch_x_var7
+l33 latch_x_var7_prime
+l34 latch_init
+o0 F(X)
+c
+
+---state var:
+x_var1: (before (before (or pay open reqc regaddr)))
+x_var4: (weakbefore (triggers false (or (not pay) (since PropositionalTrue(Logic.PLTL) open))))
+x_var2: (weakbefore (triggers false (and (or (not (or pay open reqc regaddr)) (not (and pay open reqc regaddr))) (or (not (before (or pay open reqc regaddr))) (and (not pay) (not open) (not reqc) (not regaddr))) (or (not (before (before (or pay open reqc regaddr)))) pay open reqc regaddr))))
+x_var16: (weakbefore (triggers open (or (not open) pay)))
+x_var11: (before (since PropositionalTrue(Logic.PLTL) open))
+x_var15: (weakbefore (triggers false (or (not ship) (since PropositionalTrue(Logic.PLTL) pay))))
+x_var17: (before (since PropositionalTrue(Logic.PLTL) regaddr))
+x_var6: (before (and (not skip) (not ship)))
+x_var12: (weakbefore (triggers false (not open)))
+x_var14: (before (since PropositionalTrue(Logic.PLTL) (and (weakbefore false) (or pay open reqc regaddr))))
+x_var5: (before (or pay open reqc regaddr))
+x_var8: (weakbefore (triggers false (and (or (not (before (and (not skip) (not ship)))) (and (or skip ship) (not (and skip ship)))) (or (not (before (before (and (not skip) (not ship))))) (and (not skip) (not ship))))))
+x_var10: (before (since PropositionalTrue(Logic.PLTL) (and (weakbefore false) (not skip) (not ship))))
+x_var9: (before (since PropositionalTrue(Logic.PLTL) pay))
+x_var3: (weakbefore false)
+x_var13: (weakbefore (triggers pay (or (not pay) ship)))
+x_var7: (before (before (and (not skip) (not ship))))
+
+---
+initial state: (and (not x_var1) (not x_var5) (not x_var6) (not x_var7) (not x_var9) (not x_var10) (not x_var11) (not x_var14) (not x_var17) x_var2 x_var3 x_var4 x_var8 x_var12 x_var13 x_var15 x_var16) 
+---
+transition relation:x_var1_prime iff x_var5
+x_var5_prime iff (or pay open reqc regaddr)
+x_var6_prime iff (and (not skip) (not ship))
+x_var7_prime iff x_var6
+x_var9_prime iff (or pay (and PropositionalTrue(Logic.PLTL) x_var9))
+x_var10_prime iff (or (and x_var3 (not skip) (not ship)) (and PropositionalTrue(Logic.PLTL) x_var10))
+x_var11_prime iff (or open (and PropositionalTrue(Logic.PLTL) x_var11))
+x_var14_prime iff (or (and x_var3 (or pay open reqc regaddr)) (and PropositionalTrue(Logic.PLTL) x_var14))
+x_var17_prime iff (or regaddr (and PropositionalTrue(Logic.PLTL) x_var17))
+x_var2_prime iff (and (or (not (or pay open reqc regaddr)) (not (and pay open reqc regaddr))) (or (not x_var5) (and (not pay) (not open) (not reqc) (not regaddr))) (or (not x_var1) pay open reqc regaddr) (or false x_var2))
+x_var3_prime iff false
+x_var4_prime iff (and (or (not pay) open (and PropositionalTrue(Logic.PLTL) x_var11)) (or false x_var4))
+x_var8_prime iff (and (or (not x_var6) (and (or skip ship) (not (and skip ship)))) (or (not x_var7) (and (not skip) (not ship))) (or false x_var8))
+x_var12_prime iff (and (not open) (or false x_var12))
+x_var13_prime iff (and (or (not pay) ship) (or pay x_var13))
+x_var15_prime iff (and (or (not ship) pay (and PropositionalTrue(Logic.PLTL) x_var9)) (or false x_var15))
+x_var16_prime iff (and (or (not open) pay) (or open x_var16))
+---
+final state: (and (or (not pay) ship) (or pay x_var13) (or (not ship) pay (and PropositionalTrue(Logic.PLTL) x_var9)) (or false x_var15) (or (not (and (or (and (not open) (or false x_var12)) pay (and PropositionalTrue(Logic.PLTL) x_var9)) (or (not open) pay) (or open x_var16) (or (not pay) open (and PropositionalTrue(Logic.PLTL) x_var11)) (or false x_var4) (or (and (not open) (or false x_var12)) regaddr (and PropositionalTrue(Logic.PLTL) x_var17)) (or (and x_var3 (or pay open reqc regaddr)) (and PropositionalTrue(Logic.PLTL) x_var14)) (or (not (or pay open reqc regaddr)) (not (and pay open reqc regaddr))) (or (not x_var5) (and (not pay) (not open) (not reqc) (not regaddr))) (or (not x_var1) pay open reqc regaddr) (or false x_var2))) (and (or (and x_var3 (not skip) (not ship)) (and PropositionalTrue(Logic.PLTL) x_var10)) (or (not x_var6) (and (or skip ship) (not (and skip ship)))) (or (not x_var7) (and (not skip) (not ship))) (or false x_var8))))
