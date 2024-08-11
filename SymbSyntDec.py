@@ -1,6 +1,6 @@
 from pylogics_modalities.parsers import parse_pltl
 
-from temp import SymDFA2AIGER
+from SymDFA2AIGER import SymDFA2AIGER
 
 
 from pylogics_modalities.syntax.base import (

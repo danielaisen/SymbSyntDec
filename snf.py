@@ -1,5 +1,4 @@
 
-"""Modify the formula with base operators visitor."""
 from pylogics_modalities.parsers import parse_pltl
 from functools import singledispatch
 

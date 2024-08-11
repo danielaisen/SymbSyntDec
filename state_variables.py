@@ -1,14 +1,10 @@
 
-"""Modify the formula with base operators visitor."""
-from pylogics_modalities.parsers import parse_pltl
 from functools import singledispatch
 
-from pylogics_modalities.parsers import parse_pltl
 from pylogics_modalities.syntax.base import (
     And as PLTLAnd,
     Or as PLTLOr,
     Formula,
-    Implies as PLTLImplies,
     Not as PLTLNot,
     _UnaryOp
 )
@@ -16,9 +12,6 @@ from pylogics_modalities.syntax.pltl import (
     Atomic as PLTLAtomic,
     Before,
     WeakBefore,
-    FalseFormula,
-    Historically,
-    Once,
     PropositionalFalse,
     PropositionalTrue,
     Since,
@@ -78,11 +71,6 @@ def state_variables_not(formula: PLTLNot):
     True
 
 
-# @state_variables_operands.register
-# def state_variables_implies(formula: PLTLImplies):
-#    True
-
-
 @state_variables_operands.register
 def state_variables_yesterday(formula: Before) -> Formula:
     """Compute the base formula for a Before (Yesterday) formula."""
@@ -111,7 +99,6 @@ def add_variable(formula, modality):
             complex_dic_atoms[modality] = complex_dic_atoms[modality] + [
                 'x_var' + str(index)]
         index += 1
-    # it already exists and we do not want duplications
 
 
 @state_variables_operands.register

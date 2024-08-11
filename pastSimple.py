@@ -54,7 +54,6 @@ def past_simple_con(formula: Set[PLTLAtomic]) -> Formula:
             and_c = PLTLAnd(and_c, c1)
     not_and_c = PLTLNot(and_c)
 
-    # if len(formula) == 1:
     phi1 = PLTLImplies(Before(and_neg_c), PLTLAnd(or_c, not_and_c))
     phi2 = PLTLImplies(Before(Before(and_neg_c)), and_neg_c)
     right = Historically(PLTLAnd(phi1, phi2))
