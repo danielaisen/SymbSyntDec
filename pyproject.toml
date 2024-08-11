@@ -18,14 +18,11 @@ classifiers = [
 ]
 dependencies = [
   "pylogics_modalities",
-  "SymDFA2AIGER"
+  "SymDFA2AIGER",
 ]
 
 
 [project.urls]
 Homepage = "https://github.com/danielaisen/SymbSyntDec"
 Issues = "https://github.com/danielaisen/SymbSyntDec/issues"
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
 
