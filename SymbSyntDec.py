@@ -5,24 +5,13 @@ from SymDFA2AIGER import SymDFA2AIGER
 
 from pylogics_modalities.syntax.base import (
     And as PLTLAnd,
-    Or as PLTLOr,
     Formula,
     Implies as PLTLImplies,
     Not as PLTLNot,
-    _UnaryOp,
     Equivalence as PLTLEquivalence
 )
 from pylogics_modalities.syntax.pltl import (
-    Atomic as PLTLAtomic,
-    Before,
-    WeakBefore,
-    FalseFormula,
-    Historically,
-    Once,
-    PropositionalFalse,
-    PropositionalTrue,
-    Since,
-    Triggers
+    Atomic as PLTLAtomic
 )
 
 
@@ -31,8 +20,8 @@ from ground import ground
 from pastSimple import past_simple_con, past_simple_env
 from past import past_declare_pattern
 from modify import modify
-from closure import closure, Closure_set
-from state_variables import state_variables, State_variables_simple_dict, complex_dic_atoms
+from closure import closure
+from state_variables import state_variables
 
 
 def parse_pltl_PLTLAnd(formula1, formula2):
@@ -119,21 +108,6 @@ def SymbSyntDec(sigma_controlled_str: set[str], sigma_environment_str: set[str],
                                PLTLAnd(psi_simple_env, psi_env),
                                psi_con))
 
-    # formula_pltl = PLTLAnd(psi_simple_con, psi_simple_env, psi_con)
-    # formula_pltl = psi_env
-    '''
-    # not working!!
-    formula_pltl = PLTLAnd(psi_simple_con, psi_simple_env, psi_env)
-    formula_pltl = PLTLAnd(psi_simple_con, psi_simple_env, psi_env, psi_con)
-    formula_pltl = PLTLAnd(psi_simple_con,
-                           PLTLImplies(
-                               psi_env,
-                               psi_con))
-    formula_pltl = PLTLImplies(
-        PLTLAnd(psi_simple_env, psi_env),
-        psi_con)
-        '''
-
     sigma = action_controller_pltl.union(action_environment_pltl)
     if len(sigma) != (len(action_controller_pltl) + len(action_environment_pltl)):
         raise NotImplementedError(
@@ -156,11 +130,6 @@ def SymbSyntDec(sigma_controlled_str: set[str], sigma_environment_str: set[str],
     initial_state_form = initial_state(state_variables_return_atoms)
     print(f"Initial state formula: \n {initial_state_form} \n")
 
-#    def final_state(formula, sigma, state_variables) -> Formula:
- #   snf_form = snf(formula, sigma)
-  #  return ground(snf_form, state_variables)
-#    final_state_form = final_state(formula_modified, sigma, state_variables_return_atoms)
-
     final_state_form = ground_return
     print(f"Final state formula: \n {final_state_form}\n")
 
@@ -176,7 +145,6 @@ def SymbSyntDec(sigma_controlled_str: set[str], sigma_environment_str: set[str],
     state_variables_input = (list(state_variables_return_dict.keys()))
 
     initial_state_input = initial_state_form
-    # transition_system_input = transition_relation_form
     transition_system_input = transition_relation_dict
     final_state_variable = final_state_form
 
