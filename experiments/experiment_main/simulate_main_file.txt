@@ -1,0 +1,626 @@
+daniel@daniel-ubuntu:~/Git/SymbSyntDec$ nuXmv -int
+*** This is nuXmv 2.0.0 (compiled on Mon Oct 14 17:48:12 2019)
+*** Copyright (c) 2014-2019, Fondazione Bruno Kessler
+*** For more information on nuXmv see https://nuxmv.fbk.eu
+*** or email to <nuxmv@list.fbk.eu>.
+*** Please report bugs at https://nuxmv.fbk.eu/bugs
+*** (click on "Login Anonymously" to access)
+*** Alternatively write to <nuxmv@list.fbk.eu>.
+
+*** This version of nuXmv is linked to NuSMV 2.6.0.
+*** For more information on NuSMV see <http://nusmv.fbk.eu>
+*** or email to <nusmv-users@list.fbk.eu>.
+*** Copyright (C) 2010-2019, Fondazione Bruno Kessler
+
+*** This version of nuXmv is linked to the CUDD library version 2.4.1
+*** Copyright (c) 1995-2004, Regents of the University of Colorado
+
+*** This version of nuXmv is linked to the MiniSat SAT solver. 
+*** See http://minisat.se/MiniSat.html
+*** Copyright (c) 2003-2006, Niklas Een, Niklas Sorensson
+*** Copyright (c) 2007-2010, Niklas Sorensson
+
+*** This version of nuXmv is linked to MathSAT
+*** Copyright (C) 2009-2019 by Fondazione Bruno Kessler
+*** Copyright (C) 2009-2019 by University of Trento and others
+*** See http://mathsat.fbk.eu
+
+nuXmv > read_aiger_model experiment
+experiment_set  experiments/    
+nuXmv > read_aiger_model experiments/experiment_sorted/main_experiment.aag 
+usage: read_aiger_model [-h] | [-i filename] [-r] [-m]
+   -h          Prints the command usage
+   -i filename Reads the "filename" file
+   -r          Build relational model
+   -m          Use monitor var recognition
+nuXmv > read_aiger_model -i  experiments/experiment_sorted/main_experiment.aag
+AIG input file cotains 1 output
+We consider it as a bad property.
+nuXmv > go
+nuXmv > pick_state -v -r 
+Trace Description: Simulation Trace 
+Trace Type: Simulation 
+  -> State: 1.1 <-
+    latch_x_var1 = FALSE
+    latch_x_var1_prime = FALSE
+    latch_x_var2 = FALSE
+    latch_x_var2_prime = FALSE
+    latch_x_var3 = FALSE
+    latch_x_var3_prime = FALSE
+    latch_x_var4 = FALSE
+    latch_x_var4_prime = FALSE
+    latch_x_var5 = FALSE
+    latch_x_var5_prime = FALSE
+    latch_x_var6 = FALSE
+    latch_x_var6_prime = FALSE
+    latch_x_var7 = FALSE
+    latch_x_var7_prime = FALSE
+    latch_x_var8 = FALSE
+    latch_x_var8_prime = FALSE
+    latch_x_var9 = FALSE
+    latch_x_var9_prime = FALSE
+    latch_x_var10 = FALSE
+    latch_x_var10_prime = FALSE
+    latch_x_var11 = FALSE
+    latch_x_var11_prime = FALSE
+    latch_x_var12 = FALSE
+    latch_x_var12_prime = FALSE
+    latch_x_var13 = FALSE
+    latch_x_var13_prime = FALSE
+    latch_x_var14 = FALSE
+    latch_x_var14_prime = FALSE
+    latch_x_var15 = FALSE
+    latch_x_var15_prime = FALSE
+    latch_x_var16 = FALSE
+    latch_x_var16_prime = FALSE
+    latch_x_var17 = FALSE
+    latch_x_var17_prime = FALSE
+    latch_x_var18 = FALSE
+    latch_x_var18_prime = FALSE
+    latch_x_var19 = FALSE
+    latch_x_var19_prime = FALSE
+    latch_x_var20 = FALSE
+    latch_x_var20_prime = FALSE
+    latch_x_var21 = FALSE
+    latch_x_var21_prime = FALSE
+    latch_x_var22 = FALSE
+    latch_x_var22_prime = FALSE
+    latch_x_var23 = FALSE
+    latch_x_var23_prime = FALSE
+    latch_x_var24 = FALSE
+    latch_x_var24_prime = FALSE
+    latch_x_var25 = FALSE
+    latch_x_var25_prime = FALSE
+    latch_x_var26 = FALSE
+    latch_x_var26_prime = FALSE
+    latch_x_var27 = FALSE
+    latch_x_var27_prime = FALSE
+    latch_x_var28 = FALSE
+    latch_x_var28_prime = FALSE
+    latch_x_var29 = FALSE
+    latch_x_var29_prime = FALSE
+    latch_init = FALSE
+nuXmv > simulate -v -i -k 
+simulate: k requires an argument
+usage: simulate [-h] [-p | -v] [-r | -i [-a]] [[-c "constr"] | [-t "constr"]] [-k steps]
+  -h            Prints the command usage.
+  -p            Prints current generated trace (only changed variables).
+  -v            Verbosely prints current generated trace (all variables).
+  -r            Sets picking mode to random (default is deterministic).
+  -i            Enters simulation's interactive mode.
+  -a            Displays all the state variables (changed and unchanged)
+                in every step of an interactive session.
+                It works only together with -i option.
+  -c "constr"   Sets constraint (simple expression) for the next steps.
+  -t "constr"   Sets constraint (next expression) for the next steps.
+  -k <length>   Specifies the simulation length
+                to be used when generating the simulated problem.
+  -S seed       Sets the seed for random simulation.
+nuXmv > simulate -v -i -k 6
+********  Simulation Starting From State 1.1   ********
+
+***************  AVAILABLE STATES  *************
+  
+  ================= State =================
+  latch_x_var1 = FALSE
+  latch_x_var1_prime = FALSE
+  latch_x_var2 = FALSE
+  latch_x_var2_prime = FALSE
+  latch_x_var3 = FALSE
+  latch_x_var3_prime = FALSE
+  latch_x_var4 = FALSE
+  latch_x_var4_prime = FALSE
+  latch_x_var5 = FALSE
+  latch_x_var5_prime = FALSE
+  latch_x_var6 = FALSE
+  latch_x_var6_prime = FALSE
+  latch_x_var7 = FALSE
+  latch_x_var7_prime = FALSE
+  latch_x_var8 = FALSE
+  latch_x_var8_prime = FALSE
+  latch_x_var9 = FALSE
+  latch_x_var9_prime = FALSE
+  latch_x_var10 = FALSE
+  latch_x_var10_prime = FALSE
+  latch_x_var11 = FALSE
+  latch_x_var11_prime = FALSE
+  latch_x_var12 = FALSE
+  latch_x_var12_prime = FALSE
+  latch_x_var13 = FALSE
+  latch_x_var13_prime = FALSE
+  latch_x_var14 = FALSE
+  latch_x_var14_prime = FALSE
+  latch_x_var15 = FALSE
+  latch_x_var15_prime = TRUE
+  latch_x_var16 = FALSE
+  latch_x_var16_prime = FALSE
+  latch_x_var17 = FALSE
+  latch_x_var17_prime = FALSE
+  latch_x_var18 = FALSE
+  latch_x_var18_prime = FALSE
+  latch_x_var19 = FALSE
+  latch_x_var19_prime = FALSE
+  latch_x_var20 = FALSE
+  latch_x_var20_prime = FALSE
+  latch_x_var21 = FALSE
+  latch_x_var21_prime = TRUE
+  latch_x_var22 = TRUE
+  latch_x_var22_prime = TRUE
+  latch_x_var23 = TRUE
+  latch_x_var23_prime = TRUE
+  latch_x_var24 = TRUE
+  latch_x_var24_prime = TRUE
+  latch_x_var25 = TRUE
+  latch_x_var25_prime = TRUE
+  latch_x_var26 = TRUE
+  latch_x_var26_prime = TRUE
+  latch_x_var27 = TRUE
+  latch_x_var27_prime = TRUE
+  latch_x_var28 = TRUE
+  latch_x_var28_prime = TRUE
+  latch_x_var29 = TRUE
+  latch_x_var29_prime = TRUE
+  latch_init = TRUE
+    
+    This state is reachable through:
+    0) -------------------------
+    controllable_refund = TRUE
+    controllable_ship = TRUE
+    i_set = TRUE
+    i_pay = TRUE
+    i_cancel = TRUE
+    
+    1) -------------------------
+    controllable_ship = FALSE
+    
+    2) -------------------------
+    controllable_ship = TRUE
+    i_set = FALSE
+    
+    3) -------------------------
+    controllable_ship = FALSE
+    
+    4) -------------------------
+    controllable_ship = TRUE
+    i_set = TRUE
+    i_pay = FALSE
+    
+    5) -------------------------
+    controllable_ship = FALSE
+    
+    6) -------------------------
+    controllable_ship = TRUE
+    i_set = FALSE
+    
+    7) -------------------------
+    controllable_ship = FALSE
+    
+    8) -------------------------
+    controllable_ship = TRUE
+    i_set = TRUE
+    i_pay = TRUE
+    i_cancel = FALSE
+    
+    9) -------------------------
+    controllable_ship = FALSE
+    
+    10) -------------------------
+    controllable_ship = TRUE
+    i_set = FALSE
+    
+    11) -------------------------
+    controllable_ship = FALSE
+    
+    12) -------------------------
+    controllable_ship = TRUE
+    i_set = TRUE
+    i_pay = FALSE
+    
+    13) -------------------------
+    controllable_ship = FALSE
+    
+    14) -------------------------
+    controllable_ship = TRUE
+    i_set = FALSE
+    
+    15) -------------------------
+    controllable_ship = FALSE
+    
+    16) -------------------------
+    controllable_refund = FALSE
+    controllable_ship = TRUE
+    i_set = TRUE
+    i_pay = TRUE
+    i_cancel = TRUE
+    
+    17) -------------------------
+    controllable_ship = FALSE
+    
+    18) -------------------------
+    controllable_ship = TRUE
+    i_set = FALSE
+    
+    19) -------------------------
+    controllable_ship = FALSE
+    
+    20) -------------------------
+    controllable_ship = TRUE
+    i_set = TRUE
+    i_pay = FALSE
+    
+    21) -------------------------
+    controllable_ship = FALSE
+    
+    22) -------------------------
+    controllable_ship = TRUE
+    i_set = FALSE
+    
+    23) -------------------------
+    controllable_ship = FALSE
+    
+    24) -------------------------
+    controllable_ship = TRUE
+    i_set = TRUE
+    i_pay = TRUE
+    i_cancel = FALSE
+    
+    25) -------------------------
+    controllable_ship = FALSE
+    
+    26) -------------------------
+    controllable_ship = TRUE
+    i_set = FALSE
+    
+    27) -------------------------
+    controllable_ship = FALSE
+    
+    28) -------------------------
+    controllable_ship = TRUE
+    i_set = TRUE
+    i_pay = FALSE
+    
+    29) -------------------------
+    controllable_ship = FALSE
+    
+    30) -------------------------
+    controllable_ship = TRUE
+    i_set = FALSE
+    
+    31) -------------------------
+    controllable_ship = FALSE
+  
+
+Choose a state from the above (0-31): 1
+
+Chosen state is: 1
+Too many (3e+01) future states to visualize. Please specify further constraints: 
+> latch_init = FALSE
+
+***************  AVAILABLE STATES  *************
+  
+  ================= State =================
+  latch_x_var1 = TRUE
+  latch_x_var1_prime = TRUE
+  latch_x_var2 = FALSE
+  latch_x_var2_prime = TRUE
+  latch_x_var3 = TRUE
+  latch_x_var3_prime = TRUE
+  latch_x_var4 = FALSE
+  latch_x_var4_prime = TRUE
+  latch_x_var5 = TRUE
+  latch_x_var5_prime = FALSE
+  latch_x_var6 = FALSE
+  latch_x_var6_prime = FALSE
+  latch_x_var7 = TRUE
+  latch_x_var7_prime = FALSE
+  latch_x_var8 = TRUE
+  latch_x_var8_prime = FALSE
+  latch_x_var9 = TRUE
+  latch_x_var9_prime = TRUE
+  latch_x_var10 = FALSE
+  latch_x_var10_prime = FALSE
+  latch_x_var11 = TRUE
+  latch_x_var11_prime = TRUE
+  latch_x_var12 = TRUE
+  latch_x_var12_prime = FALSE
+  latch_x_var13 = FALSE
+  latch_x_var13_prime = TRUE
+  latch_x_var14 = TRUE
+  latch_x_var14_prime = TRUE
+  latch_x_var15 = TRUE
+  latch_x_var15_prime = TRUE
+  latch_x_var16 = FALSE
+  latch_x_var16_prime = FALSE
+  latch_x_var17 = FALSE
+  latch_x_var17_prime = FALSE
+  latch_x_var18 = FALSE
+  latch_x_var18_prime = FALSE
+  latch_x_var19 = FALSE
+  latch_x_var19_prime = FALSE
+  latch_x_var20 = FALSE
+  latch_x_var20_prime = FALSE
+  latch_x_var21 = FALSE
+  latch_x_var21_prime = TRUE
+  latch_x_var22 = TRUE
+  latch_x_var22_prime = TRUE
+  latch_x_var23 = FALSE
+  latch_x_var23_prime = TRUE
+  latch_x_var24 = FALSE
+  latch_x_var24_prime = FALSE
+  latch_x_var25 = TRUE
+  latch_x_var25_prime = FALSE
+  latch_x_var26 = TRUE
+  latch_x_var26_prime = TRUE
+  latch_x_var27 = FALSE
+  latch_x_var27_prime = FALSE
+  latch_x_var28 = TRUE
+  latch_x_var28_prime = FALSE
+  latch_x_var29 = TRUE
+  latch_x_var29_prime = TRUE
+  latch_init = FALSE
+    
+    This state is reachable through:
+    0) -------------------------
+    controllable_refund = TRUE
+    controllable_ship = TRUE
+    i_set = FALSE
+    i_pay = FALSE
+    i_cancel = FALSE
+  
+  
+  ================= State =================
+  latch_x_var25_prime = TRUE
+  latch_x_var26_prime = FALSE
+    
+    This state is reachable through:
+    1) -------------------------
+    controllable_refund = FALSE
+    controllable_ship = TRUE
+    i_set = FALSE
+    i_pay = FALSE
+    i_cancel = FALSE
+  
+  
+  ================= State =================
+  latch_x_var18_prime = TRUE
+  latch_x_var25_prime = FALSE
+  latch_x_var26 = FALSE
+  latch_x_var26_prime = TRUE
+  latch_x_var27_prime = TRUE
+  latch_x_var28 = FALSE
+  latch_x_var29_prime = FALSE
+    
+    This state is reachable through:
+    2) -------------------------
+    controllable_refund = TRUE
+    controllable_ship = TRUE
+    i_set = FALSE
+    i_pay = FALSE
+    i_cancel = TRUE
+  
+  
+  ================= State =================
+  latch_x_var25_prime = TRUE
+  latch_x_var26_prime = FALSE
+    
+    This state is reachable through:
+    3) -------------------------
+    controllable_refund = FALSE
+    controllable_ship = TRUE
+    i_set = FALSE
+    i_pay = FALSE
+    i_cancel = TRUE
+  
+  
+  ================= State =================
+  latch_x_var21 = TRUE
+  latch_x_var23 = TRUE
+  latch_x_var24_prime = TRUE
+  latch_x_var25_prime = FALSE
+  latch_x_var26_prime = TRUE
+    
+    This state is reachable through:
+    4) -------------------------
+    controllable_refund = TRUE
+    controllable_ship = TRUE
+    i_set = TRUE
+    i_pay = FALSE
+    i_cancel = TRUE
+  
+  
+  ================= State =================
+  latch_x_var26 = TRUE
+  latch_x_var27_prime = FALSE
+  latch_x_var28 = TRUE
+  latch_x_var29_prime = TRUE
+    
+    This state is reachable through:
+    5) -------------------------
+    controllable_refund = TRUE
+    controllable_ship = TRUE
+    i_set = TRUE
+    i_pay = FALSE
+    i_cancel = FALSE
+  
+  
+  ================= State =================
+  latch_x_var25_prime = TRUE
+  latch_x_var26 = FALSE
+  latch_x_var26_prime = FALSE
+  latch_x_var27_prime = TRUE
+  latch_x_var28 = FALSE
+  latch_x_var29_prime = FALSE
+    
+    This state is reachable through:
+    6) -------------------------
+    controllable_refund = FALSE
+    controllable_ship = TRUE
+    i_set = TRUE
+    i_pay = FALSE
+    i_cancel = TRUE
+  
+  
+  ================= State =================
+  latch_x_var26 = TRUE
+  latch_x_var27_prime = FALSE
+  latch_x_var28 = TRUE
+  latch_x_var29_prime = TRUE
+    
+    This state is reachable through:
+    7) -------------------------
+    controllable_refund = FALSE
+    controllable_ship = TRUE
+    i_set = TRUE
+    i_pay = FALSE
+    i_cancel = FALSE
+  
+  
+  ================= State =================
+  latch_x_var16 = TRUE
+  latch_x_var21 = FALSE
+  latch_x_var21_prime = FALSE
+  latch_x_var23 = FALSE
+  latch_x_var23_prime = FALSE
+  latch_x_var24_prime = FALSE
+  latch_x_var26 = FALSE
+  latch_x_var26_prime = TRUE
+  latch_x_var27 = TRUE
+  latch_x_var27_prime = TRUE
+  latch_x_var28 = FALSE
+  latch_x_var29 = FALSE
+  latch_x_var29_prime = FALSE
+    
+    This state is reachable through:
+    8) -------------------------
+    controllable_refund = TRUE
+    controllable_ship = TRUE
+    i_set = FALSE
+    i_pay = TRUE
+    i_cancel = TRUE
+  
+  
+  ================= State =================
+  latch_x_var26_prime = FALSE
+    
+    This state is reachable through:
+    9) -------------------------
+    controllable_refund = FALSE
+    controllable_ship = TRUE
+    i_set = FALSE
+    i_pay = TRUE
+    i_cancel = TRUE
+  
+  
+  ================= State =================
+  latch_x_var26 = TRUE
+  latch_x_var26_prime = TRUE
+  latch_x_var27_prime = FALSE
+  latch_x_var28 = TRUE
+  latch_x_var29_prime = TRUE
+    
+    This state is reachable through:
+    10) -------------------------
+    controllable_refund = TRUE
+    controllable_ship = TRUE
+    i_set = FALSE
+    i_pay = TRUE
+    i_cancel = FALSE
+  
+  
+  ================= State =================
+  latch_x_var26_prime = FALSE
+    
+    This state is reachable through:
+    11) -------------------------
+    controllable_refund = FALSE
+    controllable_ship = TRUE
+    i_set = FALSE
+    i_pay = TRUE
+    i_cancel = FALSE
+  
+  
+  ================= State =================
+  latch_x_var21 = TRUE
+  latch_x_var22_prime = FALSE
+  latch_x_var23 = TRUE
+  latch_x_var24_prime = TRUE
+  latch_x_var26 = FALSE
+  latch_x_var26_prime = TRUE
+  latch_x_var27_prime = TRUE
+  latch_x_var28 = FALSE
+  latch_x_var29_prime = FALSE
+    
+    This state is reachable through:
+    12) -------------------------
+    controllable_refund = TRUE
+    controllable_ship = TRUE
+    i_set = TRUE
+    i_pay = TRUE
+    i_cancel = TRUE
+  
+  
+  ================= State =================
+  latch_x_var26_prime = FALSE
+    
+    This state is reachable through:
+    13) -------------------------
+    controllable_refund = FALSE
+    controllable_ship = TRUE
+    i_set = TRUE
+    i_pay = TRUE
+    i_cancel = TRUE
+  
+  
+  ================= State =================
+  latch_x_var22_prime = TRUE
+  latch_x_var26 = TRUE
+  latch_x_var26_prime = TRUE
+  latch_x_var27_prime = FALSE
+  latch_x_var28 = TRUE
+  latch_x_var29_prime = TRUE
+    
+    This state is reachable through:
+    14) -------------------------
+    controllable_refund = TRUE
+    controllable_ship = TRUE
+    i_set = TRUE
+    i_pay = TRUE
+    i_cancel = FALSE
+  
+  
+  ================= State =================
+  latch_x_var26_prime = FALSE
+    
+    This state is reachable through:
+    15) -------------------------
+    controllable_refund = FALSE
+    controllable_ship = TRUE
+    i_set = TRUE
+    i_pay = TRUE
+    i_cancel = FALSE
+  
+
+Choose a state from the above (0-15): 15
+
+Chosen state is: 15
+Too many (3e+01) future states to visualize. Please specify further constraints: 
