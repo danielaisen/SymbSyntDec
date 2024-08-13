@@ -116,18 +116,13 @@ def SymbSyntDec(sigma_controlled_str: set[str], sigma_environment_str: set[str],
     formula_modified = modify(formula_pltl)
 
     closure_set_return = closure(formula_modified, sigma)
-    print("1")
 
     state_variables_return_dict, state_variables_return_atoms = state_variables(
         closure_set_return)
 
     snf_formula_return = snf(formula_modified, sigma)
 
-    t_c = closure(snf_formula_return, sigma)
-    t_s1, ts2 = state_variables(t_c)
-
     ground_return = ground(snf_formula_return, state_variables_return_atoms)
-    print("1")
 
     initial_state_form = initial_state(state_variables_return_atoms)
     print(f"Initial state formula: \n {initial_state_form} \n")
