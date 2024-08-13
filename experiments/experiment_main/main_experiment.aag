@@ -34,186 +34,186 @@ aag 209 5 59 1 145
 120 122
 124 126
 128 1
-22 283
-38 287
-50 291
-54 295
-58 299
-66 303
-74 307
-86 311
-90 315
-106 319
-110 325
-14 333
-18 337
-26 341
-30 347
-34 351
-42 357
-46 361
-62 369
+22 287
+30 291
+38 295
+46 299
+62 303
+66 307
+78 311
+86 317
+98 323
+102 327
+114 331
+14 337
+18 341
+26 345
+34 349
+42 353
+50 357
+54 361
+58 369
 70 373
-78 379
+74 377
 82 383
-94 387
-98 391
-102 397
-114 401
+90 387
+94 391
+106 397
+110 401
 118 407
 122 413
 126 419
 130
-130 128 274
+130 128 280
 132 4 9
-134 132 21
+134 132 85
 136 2 9
-138 136 21
-140 10 5
-142 140 120
-144 141 18
-146 144 36
-148 143 147
-150 4 7
-152 150 109
-154 8 5
-156 154 3
-158 3 81
-160 157 159
-162 5 161
-164 9 34
-166 165 7
-168 166 109
-170 4 11
-172 170 124
-174 171 98
-176 174 84
-178 173 177
-180 150 124
-182 151 46
-184 182 88
-186 181 185
-188 8 117
-190 10 121
+138 136 85
+140 8 3
+142 140 5
+144 5 41
+146 143 145
+148 3 147
+150 6 3
+152 150 116
+154 151 54
+156 154 28
+158 153 157
+160 2 11
+162 160 97
+164 6 117
+166 8 121
+168 160 124
+170 161 18
+172 170 64
+174 169 173
+176 9 34
+178 177 11
+180 178 97
+182 2 7
+184 182 124
+186 183 90
+188 186 112
+190 185 189
 192 7 9
 194 192 11
-196 112 195
-198 197 53
-200 195 6
-202 8 10
-204 200 202
-206 64 195
-208 72 7
-210 9 11
-212 208 210
-214 112 3
-216 214 5
-218 217 105
-220 3 5
-222 2 4
-224 221 223
-226 56 225
-228 48 221
-230 219 227
-232 229 62
-234 230 232
-236 169 179
-238 187 189
-240 14 191
-242 78 199
-244 205 207
-246 213 26
-248 236 238
-250 240 242
-252 244 246
-254 248 250
-256 252 235
-258 254 256
-260 135 94
-262 139 70
-264 149 153
-266 30 163
-268 260 262
-270 264 266
-272 268 270
-274 272 259
-276 9 21
-278 129 0
-280 128 277
-282 279 281
-284 128 149
-286 279 285
-288 128 56
-290 279 289
-292 128 199
-294 279 293
-296 128 220
-298 279 297
-300 128 195
-302 279 301
-304 128 64
-306 279 305
-308 128 179
-310 279 309
-312 128 187
-314 279 313
-316 128 219
-318 279 317
-320 7 109
-322 128 321
-324 279 323
-326 189 14
-328 129 1
-330 128 326
-332 329 331
-334 128 144
-336 329 335
-338 128 252
-340 329 339
-342 153 30
-344 128 342
-346 329 345
-348 128 164
-350 329 349
-352 5 42
-354 128 352
-356 329 355
-358 128 182
-360 329 359
-362 227 229
-364 362 62
+196 12 195
+198 197 101
+200 6 8
+202 6 10
+204 8 10
+206 201 203
+208 206 205
+210 195 209
+212 36 195
+214 20 7
+216 9 11
+218 214 216
+220 12 3
+222 220 5
+224 223 61
+226 3 5
+228 2 4
+230 227 229
+232 76 231
+234 44 227
+236 225 233
+238 235 58
+240 236 238
+242 165 70
+244 167 50
+246 175 181
+248 191 199
+250 211 213
+252 219 110
+254 242 244
+256 246 248
+258 250 252
+260 254 256
+262 258 241
+264 260 262
+266 135 74
+268 139 26
+270 149 159
+272 163 94
+274 266 268
+276 270 272
+278 274 276
+280 278 265
+282 129 0
+284 128 36
+286 283 285
+288 128 159
+290 283 289
+292 128 195
+294 283 293
+296 128 76
+298 283 297
+300 128 225
+302 283 301
+304 128 175
+306 283 305
+308 128 226
+310 283 309
+312 9 85
+314 128 313
+316 283 315
+318 11 97
+320 128 319
+322 283 321
+324 128 199
+326 283 325
+328 128 191
+330 283 329
+332 129 1
+334 128 0
+336 333 335
+338 128 170
+340 333 339
+342 128 268
+344 333 343
+346 128 176
+348 333 347
+350 128 146
+352 333 351
+354 128 244
+356 333 355
+358 128 154
+360 333 359
+362 233 235
+364 362 58
 366 128 364
-368 329 367
-370 128 262
-372 329 371
-374 191 78
-376 128 374
-378 329 377
-380 128 160
-382 329 381
-384 128 260
-386 329 385
-388 128 174
-390 329 389
-392 11 102
+368 333 367
+370 128 242
+372 333 371
+374 128 266
+376 333 375
+378 7 82
+380 128 378
+382 333 381
+384 128 186
+386 333 385
+388 128 272
+390 333 389
+392 3 106
 394 128 392
-396 329 395
-398 128 0
-400 329 399
-402 9 118
+396 333 395
+398 128 258
+400 333 399
+402 7 118
 404 128 402
-406 329 405
-408 11 122
+406 333 405
+408 9 122
 410 128 408
-412 329 411
-414 5 126
+412 333 411
+414 3 126
 416 128 414
-418 329 417
-i0 controllable_refund
-i1 controllable_ship
-i2 i_set
+418 333 417
+i0 controllable_ship
+i1 controllable_refund
+i2 i_cancel
 i3 i_pay
-i4 i_cancel
+i4 i_set
 l0 latch_x_var1
 l1 latch_x_var1_prime
 l2 latch_x_var2
@@ -277,67 +277,70 @@ o0 F(X)
 c
 
 ---state var:
-x_var1: (weakbefore (triggers false (or (not pay) (weakbefore (triggers false (not pay))))))
-x_var2: (weakbefore (triggers false (or (not cancel) ship)))
-x_var3: (before (since PropositionalTrue(Logic.PLTL) pay))
-x_var4: (weakbefore (triggers false (and (or (not (or set pay cancel)) (not (and set pay cancel))) (or (not (before (or set pay cancel))) (and (not set) (not pay) (not cancel))) (or (not (before (before (or set pay cancel)))) set pay cancel))))
-x_var5: (weakbefore (triggers false (or (not ship) (since PropositionalTrue(Logic.PLTL) set))))
+x_var1: (weakbefore false)
+x_var2: (weakbefore (triggers false (or (not ship) set)))
+x_var3: (before (before (or cancel pay set)))
+x_var4: (weakbefore (triggers false (or (not ship) (since PropositionalTrue(Logic.PLTL) pay))))
+x_var5: (before (since (triggers false (or (not cancel) ship)) (and cancel (not ship) (weakbefore (triggers false (not cancel))))))
 x_var6: (weakbefore (triggers false (not pay)))
-x_var7: (before (since (triggers false (or (not cancel) ship)) (and cancel (not ship) (weakbefore (triggers false (not cancel))))))
-x_var8: (weakbefore (triggers false (not ship)))
-x_var9: (weakbefore (triggers false (or (not ship) set)))
-x_var10: (before (before (and (not refund) (not ship))))
-x_var11: (before (since PropositionalTrue(Logic.PLTL) (and (weakbefore false) (or set pay cancel))))
-x_var12: (before (and (not refund) (not ship)))
-x_var13: (weakbefore (triggers false (and (or (not (before (and (not refund) (not ship)))) (and (or refund ship) (not (and refund ship)))) (or (not (before (before (and (not refund) (not ship))))) (and (not refund) (not ship))))))
-x_var14: (before (or set pay cancel))
-x_var15: (weakbefore (triggers false (or (not refund) (since PropositionalTrue(Logic.PLTL) pay))))
-x_var16: (before (before (or set pay cancel)))
-x_var17: (weakbefore (triggers false (or (not cancel) (weakbefore (triggers false (not cancel))))))
-x_var18: (weakbefore (triggers refund (or (not pay) ship refund)))
-x_var19: (before (since (triggers false (or (not ship) cancel)) (and ship (not cancel) (weakbefore (triggers false (not ship))))))
-x_var20: (before (since (triggers false (or (not ship) set)) (and ship (not set) (weakbefore (triggers false (not ship))))))
-x_var21: (weakbefore (triggers false (or (not ship) (since PropositionalTrue(Logic.PLTL) pay))))
-x_var22: (weakbefore (triggers false (or (not ship) cancel)))
-x_var23: (weakbefore (triggers false (not cancel)))
-x_var24: (before (since PropositionalTrue(Logic.PLTL) (and (weakbefore false) (not refund) (not ship))))
-x_var25: (before (since PropositionalTrue(Logic.PLTL) set))
-x_var26: (weakbefore false)
-x_var27: (weakbefore (and (not pay) (or false (weakbefore (triggers false (not pay))))))
-x_var28: (weakbefore (and (not cancel) (or false (weakbefore (triggers false (not cancel))))))
+x_var7: (before (or cancel pay set))
+x_var8: (weakbefore (triggers refund (or (not pay) ship refund)))
+x_var9: (before (before (and (not ship) (not refund))))
+x_var10: (weakbefore (triggers false (or (not pay) (weakbefore (triggers false (not pay))))))
+x_var11: (weakbefore (triggers false (or (not cancel) ship)))
+x_var12: (weakbefore (triggers false (and (or (not (before (and (not ship) (not refund)))) (and (or ship refund) (not (and ship refund)))) (or (not (before (before (and (not ship) (not refund))))) (and (not ship) (not refund))))))
+x_var13: (before (since PropositionalTrue(Logic.PLTL) (and (weakbefore false) (not ship) (not refund))))
+x_var14: (before (since (triggers false (or (not ship) set)) (and ship (not set) (weakbefore (triggers false (not ship))))))
+x_var15: (weakbefore (triggers false (or (not cancel) (weakbefore (triggers false (not cancel))))))
+x_var16: (weakbefore (triggers false (or (not refund) (since PropositionalTrue(Logic.PLTL) pay))))
+x_var17: (before (and (not ship) (not refund)))
+x_var18: (weakbefore (triggers false (not cancel)))
+x_var19: (before (since PropositionalTrue(Logic.PLTL) pay))
+x_var20: (weakbefore (triggers false (or (not ship) cancel)))
+x_var21: (weakbefore (triggers false (or (not ship) (since PropositionalTrue(Logic.PLTL) set))))
+x_var22: (before (since PropositionalTrue(Logic.PLTL) set))
+x_var23: (before (since PropositionalTrue(Logic.PLTL) (and (weakbefore false) (or cancel pay set))))
+x_var24: (weakbefore (triggers false (not ship)))
+x_var25: (weakbefore (triggers false (and (or (not (or cancel pay set)) (and (not (and cancel pay)) (not (and cancel set)) (not (and pay set)))) (or (not (before (or cancel pay set))) (and (not cancel) (not pay) (not set))) (or (not (before (before (or cancel pay set)))) cancel pay set))))
+x_var26: (before (since (triggers false (or (not ship) cancel)) (and ship (not cancel) (weakbefore (triggers false (not ship))))))
+x_var27: (weakbefore (and (not cancel) (or false (weakbefore (triggers false (not cancel))))))
+x_var28: (weakbefore (and (not pay) (or false (weakbefore (triggers false (not pay))))))
 x_var29: (weakbefore (and (not ship) (or false (weakbefore (triggers false (not ship))))))
 
 ---
-initial state: (and (not x_var3) (not x_var7) (not x_var10) (not x_var11) (not x_var12) (not x_var14) (not x_var16) (not x_var19) (not x_var20) (not x_var24) (not x_var25) x_var1 x_var2 x_var4 x_var5 x_var6 x_var8 x_var9 x_var13 x_var15 x_var17 x_var18 x_var21 x_var22 x_var23 x_var26 x_var27 x_var28 x_var29) 
+initial state:
+(and (not x_var3) (not x_var5) (not x_var7) (not x_var9) (not x_var13) (not x_var14) (not x_var17) (not x_var19) (not x_var22) (not x_var23) (not x_var26) x_var1 x_var2 x_var4 x_var6 x_var8 x_var10 x_var11 x_var12 x_var15 x_var16 x_var18 x_var20 x_var21 x_var24 x_var25 x_var27 x_var28 x_var29) 
 ---
-transition relation:x_var3_prime iff (or pay (and PropositionalTrue(Logic.PLTL) x_var3))
-x_var7_prime iff (or (and cancel (not ship) x_var28) (and (or (not cancel) ship) (or false x_var2) x_var7))
-x_var10_prime iff x_var12
-x_var11_prime iff (or (and x_var26 (or set pay cancel)) (and PropositionalTrue(Logic.PLTL) x_var11))
-x_var12_prime iff (and (not refund) (not ship))
-x_var14_prime iff (or set pay cancel)
-x_var16_prime iff x_var14
-x_var19_prime iff (or (and ship (not cancel) x_var29) (and (or (not ship) cancel) (or false x_var22) x_var19))
-x_var20_prime iff (or (and ship (not set) x_var29) (and (or (not ship) set) (or false x_var9) x_var20))
-x_var24_prime iff (or (and x_var26 (not refund) (not ship)) (and PropositionalTrue(Logic.PLTL) x_var24))
-x_var25_prime iff (or set (and PropositionalTrue(Logic.PLTL) x_var25))
-x_var1_prime iff (and (or (not pay) x_var27) (or false x_var1))
-x_var2_prime iff (and (or (not cancel) ship) (or false x_var2))
-x_var4_prime iff (and (or (not (or set pay cancel)) (not (and set pay cancel))) (or (not x_var14) (and (not set) (not pay) (not cancel))) (or (not x_var16) set pay cancel) (or false x_var4))
-x_var5_prime iff (and (or (not ship) set (and PropositionalTrue(Logic.PLTL) x_var25)) (or false x_var5))
+transition relation:
+x_var3_prime iff x_var7
+x_var5_prime iff (or (and cancel (not ship) x_var27) (and (or (not cancel) ship) (or false x_var11) x_var5))
+x_var7_prime iff (or cancel pay set)
+x_var9_prime iff x_var17
+x_var13_prime iff (or (and x_var1 (not ship) (not refund)) (and PropositionalTrue(Logic.PLTL) x_var13))
+x_var14_prime iff (or (and ship (not set) x_var29) (and (or (not ship) set) (or false x_var2) x_var14))
+x_var17_prime iff (and (not ship) (not refund))
+x_var19_prime iff (or pay (and PropositionalTrue(Logic.PLTL) x_var19))
+x_var22_prime iff (or set (and PropositionalTrue(Logic.PLTL) x_var22))
+x_var23_prime iff (or (and x_var1 (or cancel pay set)) (and PropositionalTrue(Logic.PLTL) x_var23))
+x_var26_prime iff (or (and ship (not cancel) x_var29) (and (or (not ship) cancel) (or false x_var20) x_var26))
+x_var1_prime iff false
+x_var2_prime iff (and (or (not ship) set) (or false x_var2))
+x_var4_prime iff (and (or (not ship) pay (and PropositionalTrue(Logic.PLTL) x_var19)) (or false x_var4))
 x_var6_prime iff (and (not pay) (or false x_var6))
-x_var8_prime iff (and (not ship) (or false x_var8))
-x_var9_prime iff (and (or (not ship) set) (or false x_var9))
-x_var13_prime iff (and (or (not x_var12) (and (or refund ship) (not (and refund ship)))) (or (not x_var10) (and (not refund) (not ship))) (or false x_var13))
-x_var15_prime iff (and (or (not refund) pay (and PropositionalTrue(Logic.PLTL) x_var3)) (or false x_var15))
-x_var17_prime iff (and (or (not cancel) x_var28) (or false x_var17))
-x_var18_prime iff (and (or (not pay) ship refund) (or refund x_var18))
-x_var21_prime iff (and (or (not ship) pay (and PropositionalTrue(Logic.PLTL) x_var3)) (or false x_var21))
-x_var22_prime iff (and (or (not ship) cancel) (or false x_var22))
-x_var23_prime iff (and (not cancel) (or false x_var23))
-x_var26_prime iff false
-x_var27_prime iff (and (not pay) (or false x_var27))
-x_var28_prime iff (and (not cancel) (or false x_var28))
+x_var8_prime iff (and (or (not pay) ship refund) (or refund x_var8))
+x_var10_prime iff (and (or (not pay) x_var28) (or false x_var10))
+x_var11_prime iff (and (or (not cancel) ship) (or false x_var11))
+x_var12_prime iff (and (or (not x_var17) (and (or ship refund) (not (and ship refund)))) (or (not x_var9) (and (not ship) (not refund))) (or false x_var12))
+x_var15_prime iff (and (or (not cancel) x_var27) (or false x_var15))
+x_var16_prime iff (and (or (not refund) pay (and PropositionalTrue(Logic.PLTL) x_var19)) (or false x_var16))
+x_var18_prime iff (and (not cancel) (or false x_var18))
+x_var20_prime iff (and (or (not ship) cancel) (or false x_var20))
+x_var21_prime iff (and (or (not ship) set (and PropositionalTrue(Logic.PLTL) x_var22)) (or false x_var21))
+x_var24_prime iff (and (not ship) (or false x_var24))
+x_var25_prime iff (and (or (not (or cancel pay set)) (and (not (and cancel pay)) (not (and cancel set)) (not (and pay set)))) (or (not x_var7) (and (not cancel) (not pay) (not set))) (or (not x_var3) cancel pay set) (or false x_var25))
+x_var27_prime iff (and (not cancel) (or false x_var27))
+x_var28_prime iff (and (not pay) (or false x_var28))
 x_var29_prime iff (and (not ship) (or false x_var29))
 ---
-final state: (and (or (not ship) pay (and PropositionalTrue(Logic.PLTL) x_var3)) (or false x_var21) (or (not refund) pay (and PropositionalTrue(Logic.PLTL) x_var3)) (or false x_var15) (or (and cancel (not ship) x_var28) (and (or (not cancel) ship) (or false x_var2) x_var7)) (or (not ship) set (and PropositionalTrue(Logic.PLTL) x_var25)) (or false x_var5) (or ship (and (or (not pay) ship refund) (or refund x_var18))) (or (not (and (or (and (not pay) (or false x_var6)) set (and PropositionalTrue(Logic.PLTL) x_var25)) (or (and ship (not cancel) x_var29) (and (or (not ship) cancel) (or false x_var22) x_var19)) (or (and ship (not set) x_var29) (and (or (not ship) set) (or false x_var9) x_var20)) (or (not pay) x_var27) (or false x_var1) (or (not cancel) x_var28) (or false x_var17) (or (and x_var26 (or set pay cancel)) (and PropositionalTrue(Logic.PLTL) x_var11)) (or (not (or set pay cancel)) (not (and set pay cancel))) (or (not x_var14) (and (not set) (not pay) (not cancel))) (or (not x_var16) set pay cancel) (or false x_var4))) (and (or (and x_var26 (not refund) (not ship)) (and PropositionalTrue(Logic.PLTL) x_var24)) (or (not x_var12) (and (or refund ship) (not (and refund ship)))) (or (not x_var10) (and (not refund) (not ship))) (or false x_var13))))
+final state: 
+(and (or (not refund) pay (and PropositionalTrue(Logic.PLTL) x_var19)) (or false x_var16) (or (not ship) pay (and PropositionalTrue(Logic.PLTL) x_var19)) (or false x_var4) (or ship (and (or (not pay) ship refund) (or refund x_var8))) (or (and cancel (not ship) x_var27) (and (or (not cancel) ship) (or false x_var11) x_var5)) (or (not ship) set (and PropositionalTrue(Logic.PLTL) x_var22)) (or false x_var21) (or (not (and (or (not cancel) x_var27) (or false x_var15) (or (not pay) x_var28) (or false x_var10) (or (and ship (not set) x_var29) (and (or (not ship) set) (or false x_var2) x_var14)) (or (and (not pay) (or false x_var6)) set (and PropositionalTrue(Logic.PLTL) x_var22)) (or (and ship (not cancel) x_var29) (and (or (not ship) cancel) (or false x_var20) x_var26)) (or (and x_var1 (or cancel pay set)) (and PropositionalTrue(Logic.PLTL) x_var23)) (or (not (or cancel pay set)) (and (not (and cancel pay)) (not (and cancel set)) (not (and pay set)))) (or (not x_var7) (and (not cancel) (not pay) (not set))) (or (not x_var3) cancel pay set) (or false x_var25))) (and (or (and x_var1 (not ship) (not refund)) (and PropositionalTrue(Logic.PLTL) x_var13)) (or (not x_var17) (and (or ship refund) (not (and ship refund)))) (or (not x_var9) (and (not ship) (not refund))) (or false x_var12))))
