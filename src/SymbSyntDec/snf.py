@@ -115,7 +115,7 @@ def snf_since(formula: Since) -> Formula:
 
 
 @snf_operands.register
-def snf_since(formula: Triggers) -> Formula:
+def snf_triggers(formula: Triggers) -> Formula:
     sub1 = snf_operands(formula.operands[0])
     sub2 = snf_operands(formula.operands[1])
     sub3 = WeakBefore(formula)
