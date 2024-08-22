@@ -1,6 +1,6 @@
 from pylogics_modalities.parsers import parse_pltl
 
-from SymDFA2AIGER import SymDFA2AIGER
+from SymDFA2AIGER.main import SymDFA2AIGER
 
 
 from pylogics_modalities.syntax.base import (
@@ -115,12 +115,12 @@ def SymbSyntDec(sigma_controlled_str: set[str], sigma_environment_str: set[str],
 
     formula_modified = modify(formula_pltl)
 
-    closure_set_return = closure(formula_modified, sigma)
+    snf_formula_return = snf(formula_modified, sigma)
+
+    closure_set_return = closure(snf_formula_return, sigma)
 
     state_variables_return_dict, state_variables_return_atoms = state_variables(
         closure_set_return)
-
-    snf_formula_return = snf(formula_modified, sigma)
 
     ground_return = ground(snf_formula_return, state_variables_return_atoms)
 

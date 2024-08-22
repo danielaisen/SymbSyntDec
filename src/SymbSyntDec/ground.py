@@ -15,7 +15,6 @@ from pylogics_modalities.syntax.pltl import (
     PropositionalFalse,
     PropositionalTrue
 )
-from .state_variables import state_variables
 
 
 State_var = {}
@@ -72,15 +71,9 @@ def ground_operands_not(formula: PLTLNot) -> Formula:
 
 @ground_operands.register
 def ground_operands_yesterday(formula: Before) -> Formula:
-    state_var = State_var.get(formula)
-    if state_var == None:
-        state_variables({formula})
     return PLTLAtomic(State_var.get(formula))
 
 
 @ground_operands.register
 def ground_operands_weak_yesterday(formula: WeakBefore) -> Formula:
-    state_var = State_var.get(formula)
-    if state_var == None:
-        state_variables({formula})
     return PLTLAtomic(State_var.get(formula))

@@ -5,4 +5,4 @@ from .past import past_declare_pattern
 from .modify import modify
 from .closure import closure
 from .state_variables import state_variables
-from .SymbSyntDec import SymbSyntDec
+from .main import SymbSyntDec

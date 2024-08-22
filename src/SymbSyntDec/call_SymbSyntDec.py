@@ -1,4 +1,5 @@
-from .SymbSyntDec import SymbSyntDec
+from SymbSyntDec import SymbSyntDec
+
 
 sigma_controlled_str = {"ship", "skip"}
 sigma_environment_str = {"open", "pay", "regaddr", "reqc"}

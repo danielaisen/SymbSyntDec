@@ -1,4 +1,5 @@
-from src.SymbSyntDec import SymbSyntDec
+from src.SymbSyntDec.main import SymbSyntDec
+
 
 sigma_environment_str = {"set", "pay", "cancel"}
 
