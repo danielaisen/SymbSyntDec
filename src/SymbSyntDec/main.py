@@ -103,10 +103,7 @@ def SymbSyntDec(sigma_controlled_str: set[str], sigma_environment_str: set[str],
     psi_simple_con = past_declare_pattern(specification_con_phiC_str)
     psi_con = past_simple_con(action_controller_pltl)
 
-    formula_pltl = PLTLAnd(psi_simple_con,
-                           PLTLImplies(
-                               PLTLAnd(psi_simple_env, psi_env),
-                               psi_con))
+    formula_pltl = psi_simple_env
 
     sigma = action_controller_pltl.union(action_environment_pltl)
     if len(sigma) != (len(action_controller_pltl) + len(action_environment_pltl)):
@@ -114,15 +111,21 @@ def SymbSyntDec(sigma_controlled_str: set[str], sigma_environment_str: set[str],
             f"The set of actions are not disjoint {sigma_controlled_str, sigma_environment_str}")
 
     formula_modified = modify(formula_pltl)
+    print(formula_modified)
 
     snf_formula_return = snf(formula_modified, sigma)
+    print(snf_formula_return)
 
     closure_set_return = closure(snf_formula_return, sigma)
+    print(closure_set_return)
 
     state_variables_return_dict, state_variables_return_atoms = state_variables(
         closure_set_return)
+    print(state_variables_return_dict)
+    print(state_variables_return_atoms)
 
     ground_return = ground(snf_formula_return, state_variables_return_atoms)
+    print(ground_return)
 
     initial_state_form = initial_state(state_variables_return_atoms)
     print(f"Initial state formula: \n {initial_state_form} \n")
